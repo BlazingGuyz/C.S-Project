@@ -1,9 +1,6 @@
 import cv2, time
 import random
-
-# 1.creating a video object
 video = cv2.VideoCapture(0) 
-# 8. Variable
 a = 0
 
 while True:
@@ -23,7 +20,7 @@ while True:
     #cv2.waitKey(0)
     
     # 7. for playing 
-    key = cv2.waitKey(1)
+    key = cv2.waitKey()
     
     if key == ord('q'):
         break
