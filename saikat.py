@@ -32,5 +32,5 @@ print(a)
 # 2. shutdown the camera
 video.release()
 
-cv2.destroyAllWindows 
+cv2.destroyAllWindows() 
  
