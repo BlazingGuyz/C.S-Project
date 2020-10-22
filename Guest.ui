@@ -1,0 +1,2492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>570</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="TopFrame" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(255, 255, 255)</string>
+    </property>
+    <widget class="QWidget" name="SubTopFrame" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>801</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(75, 171, 255);</string>
+     </property>
+     <widget class="QPushButton" name="Exit">
+      <property name="geometry">
+       <rect>
+        <x>769</x>
+        <y>-1</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {	
+	border: none;
+	background-color: transparent;
+}
+QPushButton:hover {
+	background-color: rgb(125, 188, 255);
+}
+QPushButton:pressed {	
+	background-color:  rgb(125, 188, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-x.png</normaloff>icons/cil-x.png</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Minimize">
+      <property name="geometry">
+       <rect>
+        <x>740</x>
+        <y>-1</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {	
+	border: none;
+	background-color: transparent;
+}
+QPushButton:hover {
+	background-color: rgb(125, 188, 255);
+}
+QPushButton:pressed {	
+	background-color:  rgb(125, 188, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-window-minimize.png</normaloff>icons/cil-window-minimize.png</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Info">
+      <property name="geometry">
+       <rect>
+        <x>710</x>
+        <y>-1</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {	
+	border: none;
+	background-color: transparent;
+}
+QPushButton:hover {
+	background-color: rgb(125, 188, 255);
+}
+QPushButton:pressed {	
+	background-color:  rgb(125, 188, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-information.png</normaloff>icons/cil-information.png</iconset>
+      </property>
+     </widget>
+     <widget class="QLabel" name="MainLab">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>4</y>
+        <width>211</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>75</red>
+            <green>171</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>75</red>
+            <green>171</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>75</red>
+            <green>171</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="PlaceholderText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>98</red>
+            <green>98</green>
+            <blue>98</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>75</red>
+            <green>171</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>75</red>
+            <green>171</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>75</red>
+            <green>171</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="PlaceholderText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>98</red>
+            <green>98</green>
+            <blue>98</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="WindowText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Button">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>75</red>
+            <green>171</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Text">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="ButtonText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>75</red>
+            <green>171</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>75</red>
+            <green>171</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="PlaceholderText">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>98</red>
+            <green>98</green>
+            <blue>98</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:rgb(0, 0, 0)</string>
+      </property>
+      <property name="text">
+       <string>KVS Hotel Management Software</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="Main" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>30</y>
+      <width>801</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(24, 255, 228);</string>
+    </property>
+    <widget class="QWidget" name="SubMain" native="true">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>27</y>
+       <width>741</width>
+       <height>441</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:rgba(250, 250, 250, 150);
+border:3px solid;
+border-radius:10px;
+border-color: rgb(0, 36, 114);</string>
+     </property>
+     <widget class="Line" name="Partition1">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>0</y>
+        <width>4</width>
+        <height>441</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="Partition2">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>0</y>
+        <width>4</width>
+        <height>441</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="Partition3">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>0</y>
+        <width>4</width>
+        <height>441</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="Partition4">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>220</y>
+        <width>741</width>
+        <height>4</height>
+       </rect>
+      </property>
+      <property name="toolTipDuration">
+       <number>5</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="MenuButton">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>30</y>
+        <width>111</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {	
+	border: none;
+	background-color: transparent;
+}
+QPushButton:hover {
+	background-color: rgba(240, 240, 240,150);
+}
+QPushButton:pressed {	
+	background-color:  rgba(240, 240, 240,150);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-menu.png</normaloff>icons/cil-menu.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>255</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="DNDButton">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>30</y>
+        <width>111</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {	
+	border: none;
+	background-color: transparent;
+}
+QPushButton:hover {
+	background-color: rgba(240, 240, 240,150);
+}
+QPushButton:pressed {	
+	background-color:  rgba(240, 240, 240,150);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-dnd.png</normaloff>icons/cil-dnd.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>255</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="RoomServiceButton">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>250</y>
+        <width>111</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {	
+	border: none;
+	background-color: transparent;
+}
+QPushButton:hover {
+	background-color: rgba(240, 240, 240,150);
+}
+QPushButton:pressed {	
+	background-color:  rgba(240, 240, 240,150);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-housekeeping.png</normaloff>icons/cil-housekeeping.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>255</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="FrontDeskButton">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>30</y>
+        <width>111</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {	
+	border: none;
+	background-color: transparent;
+}
+QPushButton:hover {
+	background-color: rgba(240, 240, 240,150);
+}
+QPushButton:pressed {	
+	background-color:  rgba(240, 240, 240,150);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-deskbell.png</normaloff>icons/cil-deskbell.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>255</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="CheckOutButton">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>250</y>
+        <width>111</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {	
+	border: none;
+	background-color: transparent;
+}
+QPushButton:hover {
+	background-color: rgba(240, 240, 240,150);
+}
+QPushButton:pressed {	
+	background-color:  rgba(240, 240, 240,150);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-calendar.png</normaloff>icons/cil-calendar.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>255</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="AskUsButton">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>250</y>
+        <width>111</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {	
+	border: none;
+	background-color: transparent;
+}
+QPushButton:hover {
+	background-color: rgba(240, 240, 240,150);
+}
+QPushButton:pressed {	
+	background-color:  rgba(240, 240, 240,150);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-question.png</normaloff>icons/cil-question.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>255</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ENPButton">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>30</y>
+        <width>111</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {	
+	border: none;
+	background-color: transparent;
+}
+QPushButton:hover {
+	background-color: rgba(240, 240, 240,150);
+}
+QPushButton:pressed {	
+	background-color:  rgba(240, 240, 240,150);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-newspaper.png</normaloff>icons/cil-newspaper.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>255</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="RateUsButton">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>250</y>
+        <width>111</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {	
+	border: none;
+	background-color: transparent;
+}
+QPushButton:hover {
+	background-color: rgba(240, 240, 240,150);
+}
+QPushButton:pressed {	
+	background-color:  rgba(240, 240, 240,150);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-star.png</normaloff>icons/cil-star.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>100</width>
+        <height>255</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="MenuLab">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>160</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(0, 36, 114);
+color:white;
+border-color:rgb(0, 0, 0)</string>
+      </property>
+      <property name="text">
+       <string>Order to your room</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="DNDLab">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>160</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(0, 36, 114);
+color:white;
+border-color:rgb(0, 0, 0)</string>
+      </property>
+      <property name="text">
+       <string>Enable DND</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="RoomServiceLab">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>380</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(0, 36, 114);
+color:white;
+border-color:rgb(0, 0, 0)</string>
+      </property>
+      <property name="text">
+       <string>Room Service</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="FrontDeskLab">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>160</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(0, 36, 114);
+color:white;
+border-color:rgb(0, 0, 0)</string>
+      </property>
+      <property name="text">
+       <string>Front Desk</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CheckOutLab">
+      <property name="geometry">
+       <rect>
+        <x>24</x>
+        <y>380</y>
+        <width>131</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(0, 36, 114);
+color:white;
+border-color:rgb(0, 0, 0)</string>
+      </property>
+      <property name="text">
+       <string> Request Check-Out 
+date modification </string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ENPLab">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>160</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(0, 36, 114);
+color:white;
+border-color:rgb(0, 0, 0)</string>
+      </property>
+      <property name="text">
+       <string>E-Newspaper</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="RateUsLab">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>380</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(0, 36, 114);
+color:white;
+border-color:rgb(0, 0, 0)</string>
+      </property>
+      <property name="text">
+       <string>Rate Us</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="AskUsLab">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>380</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(0, 36, 114);
+color:white;
+border-color:rgb(0, 0, 0)</string>
+      </property>
+      <property name="text">
+       <string>About Us</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="BG">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>801</width>
+       <height>497</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>background/bg7.jpg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <zorder>BG</zorder>
+    <zorder>SubMain</zorder>
+   </widget>
+   <widget class="QWidget" name="ENPPage" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>70</y>
+      <width>801</width>
+      <height>461</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(75, 171, 255);</string>
+    </property>
+    <widget class="QWebEngineView" name="SubENPPage" native="true">
+     <property name="geometry">
+      <rect>
+       <x>9</x>
+       <y>9</y>
+       <width>781</width>
+       <height>441</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:rgb(255, 255, 255);
+border:1px solid;
+border-color:rgb(14, 36, 112);</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="RateUsPage" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>70</y>
+      <width>0</width>
+      <height>461</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(24, 255, 228);</string>
+    </property>
+    <widget class="QLabel" name="BG2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>801</width>
+       <height>461</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>background/bg1.jpg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QWidget" name="SubRateUsPage" native="true">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>701</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:rgba(250, 250, 250, 150);
+border:3px solid;
+border-radius:10px;
+border-color: rgb(0, 36, 114);</string>
+     </property>
+     <widget class="QPushButton" name="Star1">
+      <property name="geometry">
+       <rect>
+        <x>328</x>
+        <y>55</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star1_2">
+      <property name="geometry">
+       <rect>
+        <x>392</x>
+        <y>55</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star1_3">
+      <property name="geometry">
+       <rect>
+        <x>456</x>
+        <y>55</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star1_4">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>55</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star1_5">
+      <property name="geometry">
+       <rect>
+        <x>589</x>
+        <y>55</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star2_2">
+      <property name="geometry">
+       <rect>
+        <x>392</x>
+        <y>103</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star2_3">
+      <property name="geometry">
+       <rect>
+        <x>456</x>
+        <y>103</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star2_4">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>103</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star2_5">
+      <property name="geometry">
+       <rect>
+        <x>589</x>
+        <y>103</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star2">
+      <property name="geometry">
+       <rect>
+        <x>328</x>
+        <y>103</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star3_2">
+      <property name="geometry">
+       <rect>
+        <x>392</x>
+        <y>154</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star3_3">
+      <property name="geometry">
+       <rect>
+        <x>456</x>
+        <y>154</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star3_4">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>154</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star3_5">
+      <property name="geometry">
+       <rect>
+        <x>589</x>
+        <y>154</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star3">
+      <property name="geometry">
+       <rect>
+        <x>328</x>
+        <y>154</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="FeedbackQuestion">
+      <property name="geometry">
+       <rect>
+        <x>88</x>
+        <y>60</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:transparent;
+border:0px;
+</string>
+      </property>
+      <property name="text">
+       <string>Decor of the hotel</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="FeedbackBar">
+      <property name="geometry">
+       <rect>
+        <x>4</x>
+        <y>10</y>
+        <width>694</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:2px;
+border-radius:0px;</string>
+      </property>
+      <property name="text">
+       <string>      Can we know a little about your stay with us? Based on your stay with us, please rate us on the following </string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star5">
+      <property name="geometry">
+       <rect>
+        <x>328</x>
+        <y>259</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star5_2">
+      <property name="geometry">
+       <rect>
+        <x>392</x>
+        <y>259</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star5_5">
+      <property name="geometry">
+       <rect>
+        <x>589</x>
+        <y>259</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star5_4">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>259</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star5_3">
+      <property name="geometry">
+       <rect>
+        <x>456</x>
+        <y>259</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star6">
+      <property name="geometry">
+       <rect>
+        <x>328</x>
+        <y>314</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star6_2">
+      <property name="geometry">
+       <rect>
+        <x>392</x>
+        <y>314</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star6_5">
+      <property name="geometry">
+       <rect>
+        <x>589</x>
+        <y>314</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star6_4">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>314</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star6_3">
+      <property name="geometry">
+       <rect>
+        <x>456</x>
+        <y>314</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star4">
+      <property name="geometry">
+       <rect>
+        <x>328</x>
+        <y>206</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star4_2">
+      <property name="geometry">
+       <rect>
+        <x>392</x>
+        <y>206</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star4_5">
+      <property name="geometry">
+       <rect>
+        <x>589</x>
+        <y>206</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star4_4">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>206</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Star4_3">
+      <property name="geometry">
+       <rect>
+        <x>456</x>
+        <y>206</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-startrans.png</normaloff>icons/cil-startrans.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+     </widget>
+     <widget class="QLabel" name="FeedbackQuestion_2">
+      <property name="geometry">
+       <rect>
+        <x>88</x>
+        <y>110</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:transparent;
+border:0px;
+</string>
+      </property>
+      <property name="text">
+       <string>Staff Friendliness</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="FeedbackQuestion_3">
+      <property name="geometry">
+       <rect>
+        <x>88</x>
+        <y>161</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:transparent;
+border:0px;
+</string>
+      </property>
+      <property name="text">
+       <string>Check-in process</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="FeedbackQuestion_4">
+      <property name="geometry">
+       <rect>
+        <x>88</x>
+        <y>214</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:transparent;
+border:0px;
+</string>
+      </property>
+      <property name="text">
+       <string>Flexibility</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="FeedbackQuestion_5">
+      <property name="geometry">
+       <rect>
+        <x>88</x>
+        <y>262</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:transparent;
+border:0px;
+</string>
+      </property>
+      <property name="text">
+       <string>Facilities</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="FeedbackQuestion_6">
+      <property name="geometry">
+       <rect>
+        <x>88</x>
+        <y>312</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:transparent;
+border:0px;
+</string>
+      </property>
+      <property name="text">
+       <string>Reservation</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="NextButton">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>350</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {	
+	border: none;
+	background-color:rgb(75, 171, 255);
+	border-radius:5px;
+}
+QPushButton:hover {
+	background-color: rgb(125, 188, 255);
+}
+QPushButton:pressed {	
+	background-color:  rgb(125, 188, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-next.png</normaloff>icons/cil-next.png</iconset>
+      </property>
+     </widget>
+     <widget class="QWidget" name="SubbedRateUsPage" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>701</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(250, 250, 250);
+border:3px solid;
+border-radius:10px;
+border-color: rgb(0, 36, 114);</string>
+      </property>
+      <widget class="QLabel" name="FeedbackDone">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>80</y>
+         <width>341</width>
+         <height>231</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background:transparent;
+border:0px;
+</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="FeedbackQuestion_7">
+      <property name="geometry">
+       <rect>
+        <x>325</x>
+        <y>36</y>
+        <width>41</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:transparent;
+border:0px;
+</string>
+      </property>
+      <property name="text">
+       <string>1 Star</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="FeedbackQuestion_8">
+      <property name="geometry">
+       <rect>
+        <x>585</x>
+        <y>36</y>
+        <width>41</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background:transparent;
+border:0px;
+</string>
+      </property>
+      <property name="text">
+       <string>5 Stars</string>
+      </property>
+     </widget>
+     <zorder>Star1</zorder>
+     <zorder>Star1_2</zorder>
+     <zorder>Star1_3</zorder>
+     <zorder>Star1_4</zorder>
+     <zorder>Star1_5</zorder>
+     <zorder>Star2_2</zorder>
+     <zorder>Star2_3</zorder>
+     <zorder>Star2_4</zorder>
+     <zorder>Star2_5</zorder>
+     <zorder>Star2</zorder>
+     <zorder>Star3_2</zorder>
+     <zorder>Star3_3</zorder>
+     <zorder>Star3_4</zorder>
+     <zorder>Star3_5</zorder>
+     <zorder>Star3</zorder>
+     <zorder>FeedbackQuestion</zorder>
+     <zorder>FeedbackBar</zorder>
+     <zorder>Star5</zorder>
+     <zorder>Star5_2</zorder>
+     <zorder>Star5_5</zorder>
+     <zorder>Star5_4</zorder>
+     <zorder>Star5_3</zorder>
+     <zorder>Star6</zorder>
+     <zorder>Star6_2</zorder>
+     <zorder>Star6_5</zorder>
+     <zorder>Star6_4</zorder>
+     <zorder>Star6_3</zorder>
+     <zorder>Star4</zorder>
+     <zorder>Star4_2</zorder>
+     <zorder>Star4_5</zorder>
+     <zorder>Star4_4</zorder>
+     <zorder>Star4_3</zorder>
+     <zorder>FeedbackQuestion_2</zorder>
+     <zorder>FeedbackQuestion_3</zorder>
+     <zorder>FeedbackQuestion_4</zorder>
+     <zorder>FeedbackQuestion_5</zorder>
+     <zorder>FeedbackQuestion_6</zorder>
+     <zorder>NextButton</zorder>
+     <zorder>FeedbackQuestion_7</zorder>
+     <zorder>FeedbackQuestion_8</zorder>
+     <zorder>SubbedRateUsPage</zorder>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="MidFrame" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>30</y>
+      <width>801</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(255, 255, 255)</string>
+    </property>
+    <widget class="QPushButton" name="ReturnButton">
+     <property name="geometry">
+      <rect>
+       <x>7</x>
+       <y>5</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {	
+	border: none;
+	background-color:rgb(75, 171, 255);
+	border-radius:5px;
+}
+QPushButton:hover {
+	background-color: rgb(125, 188, 255);
+}
+QPushButton:pressed {	
+	background-color:  rgb(125, 188, 255);
+}</string>
+     </property>
+     <property name="text">
+      <string>Return</string>
+     </property>
+     <property name="icon">
+      <iconset>
+       <normaloff>icons/cil-previous.png</normaloff>icons/cil-previous.png</iconset>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="CheckOutPage" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>70</y>
+      <width>0</width>
+      <height>461</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(170, 85, 0)</string>
+    </property>
+    <widget class="QLabel" name="BG2_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>801</width>
+       <height>461</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>background/bg4.jpg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QWidget" name="SubCheckOutPage" native="true">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>30</y>
+       <width>701</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:rgba(250, 250, 250, 150);
+border:3px solid;
+border-radius:10px;
+border-color: rgb(0, 36, 114);</string>
+     </property>
+     <widget class="QDateTimeEdit" name="CheckOutCalen">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>190</y>
+        <width>251</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QDateTimeEdit {
+	background-color: rgba(27, 29, 35,180);
+	border-radius: 5px;
+	border: 2px solid rgb(27, 29, 35);
+	color:rgb(182, 182, 182);
+	padding-left: 10px;
+}
+QDateTimeEdit:hover {
+	border: 2px solid rgb(64, 71, 88);
+}
+QDateTimeEdit:focus {
+	border: 2px solid rgb(91, 101, 124);
+	color:rgb(182, 182, 182)
+}
+QCalendarWidget QWidget{
+background-color: rgb(39, 44, 54);
+
+border-radius:0px;
+color:rgb(181, 181, 195)
+}
+
+QCalendarWidget QWidget:hover {
+	border: 2px solid rgb(64, 71, 88);
+}
+QCalendarWidget QToolButton{
+color:rgb(181, 181, 195);
+border:1px solid rgb(27, 29, 35);
+border-bottom:0px;
+border-radius:0px;
+icon-size: 30px;
+}
+
+QCalendarWidget QMenu{
+background-color: rgb(39, 44, 54);
+border:1px solid;
+color:rgb(181, 181, 195)
+
+}
+
+QCalendarWidget QAbstractItemView:enabled{
+background-color: rgb(39, 44, 54);
+color:rgb(108, 108, 108);
+}
+
+
+QCalendarWidget QAbstractItemView:disabled{
+background-color: rgb(39, 44, 54);
+color: rgb(182, 182, 197);
+}
+
+QCalendarWidget QSpinBox{
+    background-color: rgb(39, 44, 54);
+}</string>
+      </property>
+      <property name="calendarPopup">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CheckOutPageBar">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>401</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:transparent;
+border:0px transparent;
+border-radius:0px;</string>
+      </property>
+      <property name="text">
+       <string>Enjoying your stay? Request a new checkout date!</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::RichText</enum>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="RequestCheckOutBut">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>260</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>10</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background-color: rgba(27, 29, 35,180);
+	border-radius: 5px;
+	border: 2px solid rgb(27, 29, 35);
+}
+QPushButton:hover {
+	border: 2px solid rgb(64, 71, 88);
+}
+QPushButton:focus {
+	border: 2px solid rgb(91, 101, 124);
+}</string>
+      </property>
+      <property name="text">
+       <string>Place your Request</string>
+      </property>
+     </widget>
+     <widget class="Line" name="CheckOutDiv">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>701</width>
+        <height>3</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="CurrentCheckoutDate">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>120</y>
+        <width>271</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:0px;
+border-radius:5px;</string>
+      </property>
+      <property name="text">
+       <string>   Your current Checkout date is:</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <zorder>TopFrame</zorder>
+   <zorder>MidFrame</zorder>
+   <zorder>ENPPage</zorder>
+   <zorder>CheckOutPage</zorder>
+   <zorder>Main</zorder>
+   <zorder>RateUsPage</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header location="global">PyQt5.QtWebEngineWidgets</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
