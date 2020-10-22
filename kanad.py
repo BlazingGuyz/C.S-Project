@@ -17,9 +17,6 @@ from PyQt5.QtWidgets import QWidget
 
 
 class Ui_MainWindow(QWidget):
-	def __init__(self):
-		super().__init__()
-		self.setMouseTracking(True)
 	def setupUi(self, MainWindow):
 		MainWindow.setObjectName("MainWindow")
 		MainWindow.resize(830, 685)
