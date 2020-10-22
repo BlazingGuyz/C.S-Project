@@ -47,13 +47,14 @@ def Details():
     x5=input("Email")#Email
     x6=int(input("Phone No"))#phone no
     Registration(x1,x2,x3,x4,x5,x6,room)
+    
 def Registration(x1,x2,x3,x4,x5,x6,room):
     with open('SerialNo.txt', 'r') as file:
         for i in file.readlines():
             y=int(i)
     mycursor.execute("insert into GData values(%s,%s,%s,%s,%s,%s,%s,%s)",(y,x1,x2,x3,x4,x5,x6,room))
     dict={101:2000,102:2000,103:2000,104:2000,201:2500,202:2500,203:2500,301:3750,302:3750,301:3750}
-    mycursor.execute("insert into R%s(Details,Date,EntryTime,Email,Serialno,Phoneno) select Details,Date,EntryTime,Email,Serialno,Phoneno from GData;"%room)
+    mycursor.execute("insert into R%s(Details,Date,Time,Email,Serialno,Phoneno) select Details,Date,Time,Email,Serialno,Phoneno from GData;"%room)
     amount=dict[room]
     mycursor.execute("update R%s set Amount=%s,Chargedfor='accommodation' where serialno=%s"%(room,amount,y))
     #Under construction Room
@@ -121,7 +122,7 @@ def Checkout():
     p=data[0]
     p1=p[0]
     print(p1)
-    mycursor.execute("insert into RoomHis(Date,EntryTime,Details,Photo,Email,Serialno,Roomno,Phoneno) select Date,EntryTime,Details,Photo,Email,Serialno,RoomNo,Phoneno from GData where SerialNo=%s;"%p1)
+    mycursor.execute("insert into RoomHis(Date,Time,Details,Photo,Email,Serialno,Roomno,Phoneno) select Date,Time,Details,Photo,Email,Serialno,RoomNo,Phoneno from GData where SerialNo=%s;"%p1)
     mycursor.execute("update RoomHis set Amount=%s where SerialNo=%s;"%(k1,p1))
     mycursor.execute("Delete from GData where SerialNo=%s;",p1)
     mycursor.execute("Truncate table R%s;"%room)

@@ -3346,6 +3346,7 @@ class Ui_MainWindow(QWidget):
 		self.statusbar.setObjectName("statusbar")
 		MainWindow.setStatusBar(self.statusbar)
 		self.ExitButton.clicked.connect(lambda:exit())
+		self.Book.clicked.connect(lambda:self.Registration())
 		#self.NotificationPage.setGeometry(QtCore.QRect(0, 0, 830, 21))
 		self.MinimizeButton.clicked.connect(lambda:MainWindow.showMinimized())
 		self.retranslateUi(MainWindow)
@@ -3366,6 +3367,7 @@ class Ui_MainWindow(QWidget):
 			#	self.move(self.pos() + event.globalPos() - self.dragPos)
 			#	self.dragPos = event.globalPos()
 			#	event.accept()
+
 		def releasedWindow(event):
 			# MOVE WINDOW
 			pass
@@ -3373,7 +3375,38 @@ class Ui_MainWindow(QWidget):
 		self.FrameSubbedTop.mousePressEvent=pressWindow
 		self.FrameSubbedTop.mouseReleaseEvent=releasedWindow	
 		
+	def Registration(self):
+		x1=self.GuestName.text()
+		with open('14214.jpg', 'rb') as file:
+			x2=file.read()
+		x3=self.CheckIn.text()
+		checkoutdate=self.CheckOut.text()
+		timevar2=checkoutdate.split[" "]
+		timevar2=timevar2[1]
+		timevar=x3.split[" "][1]
+		x3=str(x3.split[" "][0])+"."+str(checkoutdate.split[" "][0])
+		print(x3)
+		x4=timevar+"."+timevar2
+		x5=self.GuestEmailID.text()
+		x6=self.GuestPhoneNo.text()
+		room=self.RoomNumber.setCurrentText()
 
+
+		with open('SerialNo.txt', 'r') as file:
+			for i in file.readlines():
+				y=int(i)
+		mycursor.execute("insert into GData values(%s,%s,%s,%s,%s,%s,%s,%s)",(y,x1,x2,x3,x4,x5,x6,room))
+		dict={101:2000,102:2000,103:2000,104:2000,201:2500,202:2500,203:2500,301:3750,302:3750,301:3750}
+		mycursor.execute("insert into R%s(Details,Date,EntryTime,Email,Serialno,Phoneno) select Details,Date,EntryTime,Email,Serialno,Phoneno from GData;"%room)
+		amount=dict[room]
+		mycursor.execute("update R%s set Amount=%s,Chargedfor='accommodation' where serialno=%s"%(room,amount,y))
+		#Under construction Room
+		mycursor.execute("update Room set RoomStatus='occupied',SerialNo=%s where RoomNo=%s;"%(y,room))
+		mydb.commit()
+		with open('SerialNo.txt','a') as file:
+			p=y+1
+			file.write("\n")
+			file.write("%s"%p)	
 	
 		
 	def retranslateUi(self, MainWindow):
