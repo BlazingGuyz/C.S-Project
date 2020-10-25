@@ -92,7 +92,7 @@ def Registration(x1,x2,x3,x4,x5,x6,room):
 		SN='1'
 	mycursor.execute("insert into GData values(%s,%s,%s,%s,%s,%s,%s,%s)",(SN,x1,x2,x3,x4,x5,x6,room))
 	dict={101:2000,102:2000,103:2000,104:2000,201:2500,202:2500,203:2500,301:3750,302:3750,301:3750}
-	mycursor.execute(insert into R%s(Details,Date,EntryTime,Email,Serialno,Phoneno) select Details,Date,EntryTime,Email,Serialno,Phoneno from GData;"%room)
+	mycursor.execute("insert into R%s(Details,Date,EntryTime,Email,Serialno,Phoneno) select Details,Date,EntryTime,Email,Serialno,Phoneno from GData;"%room)
 	amount=dict[room]
 	mycursor.execute("update R%s set Amount=%s,Chargedfor='accommodation' where serialno=%s"%(room,amount,SN))
 	#Under construction Room
