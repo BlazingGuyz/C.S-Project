@@ -869,11 +869,35 @@ QComboBox:hover {
 }
 QComboBox:focus {
 	border: 2px solid rgb(91, 101, 124);
+}
+QComboBox QListView{
+	border:1px solid;
+	border-radius:0px;
 }</string>
       </property>
       <property name="placeholderText">
        <string>Room Type</string>
       </property>
+      <item>
+       <property name="text">
+        <string>Delux</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Single</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Mini</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Master</string>
+       </property>
+      </item>
      </widget>
      <widget class="QLabel" name="CheckInLab">
       <property name="geometry">
@@ -2019,6 +2043,10 @@ QComboBox:hover {
 }
 QComboBox:focus {
 	border: 2px solid rgb(91, 101, 124);
+}
+QComboBox QListView{
+	border:1px solid;
+	border-radius:0px;
 }</string>
       </property>
       <property name="placeholderText">
