@@ -6183,7 +6183,12 @@ QPushButton:pressed {
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QLabel{
+background-color:transparent;
+}
+QLabel:hover{
+background-color:rgba(120, 120, 120, 200)
+}</string>
        </property>
        <property name="text">
         <string>Guest's Name</string>
@@ -6406,7 +6411,12 @@ QPushButton:pressed {
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QLabel{
+background-color:transparent;
+}
+QLabel:hover{
+background-color:rgba(120, 120, 120, 200)
+}</string>
        </property>
        <property name="text">
         <string>Room Type</string>
@@ -6629,7 +6639,12 @@ QPushButton:pressed {
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QLabel{
+background-color:transparent;
+}
+QLabel:hover{
+background-color:rgba(120, 120, 120, 200)
+}</string>
        </property>
        <property name="text">
         <string>Room No.</string>
@@ -6852,7 +6867,12 @@ QPushButton:pressed {
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QLabel{
+background-color:transparent;
+}
+QLabel:hover{
+background-color:rgba(120, 120, 120, 200)
+}</string>
        </property>
        <property name="text">
         <string>Check-In Date</string>
@@ -7075,7 +7095,12 @@ QPushButton:pressed {
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QLabel{
+background-color:transparent;
+}
+QLabel:hover{
+background-color:rgba(120, 120, 120, 200)
+}</string>
        </property>
        <property name="text">
         <string>Check-Out Date</string>
@@ -8636,7 +8661,12 @@ QPushButton:pressed {
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QLabel{
+background-color:transparent;
+}
+QLabel:hover{
+background-color:rgba(120, 120, 120, 200)
+}</string>
        </property>
        <property name="text">
         <string>Guest's Phone No.</string>
@@ -8859,7 +8889,12 @@ QPushButton:pressed {
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QLabel{
+background-color:transparent;
+}
+QLabel:hover{
+background-color:rgba(120, 120, 120, 200)
+}</string>
        </property>
        <property name="text">
         <string>Guest's EmailID</string>
