@@ -3707,8 +3707,8 @@ padding:2px</string>
      <widget class="QWidget" name="SubRoomPage" native="true">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>26</y>
+        <x>50</x>
+        <y>20</y>
         <width>731</width>
         <height>501</height>
        </rect>
@@ -4353,7 +4353,7 @@ border-shadow:1px</string>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>10</y>
+        <y>0</y>
         <width>811</width>
         <height>531</height>
        </rect>
@@ -4376,7 +4376,7 @@ border-shadow:1px</string>
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>0</width>
+       <width>831</width>
        <height>571</height>
       </rect>
      </property>
