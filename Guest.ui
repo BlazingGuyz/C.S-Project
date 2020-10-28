@@ -7,8 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>570</height>
+    <height>530</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>530</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>530</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -952,7 +964,7 @@ border-color:rgb(0, 0, 0)</string>
        <x>0</x>
        <y>0</y>
        <width>801</width>
-       <height>497</height>
+       <height>499</height>
       </rect>
      </property>
      <property name="text">
@@ -973,7 +985,7 @@ border-color:rgb(0, 0, 0)</string>
      <rect>
       <x>0</x>
       <y>70</y>
-      <width>801</width>
+      <width>0</width>
       <height>461</height>
      </rect>
     </property>
@@ -2460,24 +2472,314 @@ border-radius:5px;</string>
      </widget>
     </widget>
    </widget>
+   <widget class="QWidget" name="MenuPage" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>70</y>
+      <width>0</width>
+      <height>461</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(24, 255, 228);</string>
+    </property>
+    <widget class="QLabel" name="BG2_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>801</width>
+       <height>461</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>background/bg1.jpg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QWidget" name="SubMenuPage" native="true">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>761</width>
+       <height>411</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:rgba(250, 250, 250, 150);
+border:3px solid;
+border-radius:10px;
+border-color: rgb(0, 36, 114);</string>
+     </property>
+     <widget class="QListWidget" name="ItemListWidget">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>50</y>
+        <width>641</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::DoubleClicked</set>
+      </property>
+      <property name="showDropIndicator" stdset="0">
+       <bool>false</bool>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::MultiSelection</enum>
+      </property>
+      <property name="selectionRectVisible">
+       <bool>true</bool>
+      </property>
+      <item>
+       <property name="text">
+        <string>Vegetarian</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
+       </property>
+       <property name="foreground">
+        <brush brushstyle="NoBrush">
+         <color alpha="255">
+          <red>0</red>
+          <green>250</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>icons/cil-veg.png</normaloff>icons/cil-veg.png</iconset>
+       </property>
+       <property name="flags">
+        <set>ItemIsSelectable|ItemIsEnabled</set>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Non Vegetarian</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
+       </property>
+       <property name="foreground">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>250</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>icons/cil-nveg.png</normaloff>icons/cil-nveg.png</iconset>
+       </property>
+       <property name="flags">
+        <set>ItemIsSelectable|ItemIsEnabled</set>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Sea Food</string>
+       </property>
+       <property name="textAlignment">
+        <set>AlignCenter</set>
+       </property>
+       <property name="foreground">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>250</blue>
+         </color>
+        </brush>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>icons/cil-sea.png</normaloff>icons/cil-sea.png</iconset>
+       </property>
+       <property name="flags">
+        <set>ItemIsSelectable|ItemIsEnabled</set>
+       </property>
+      </item>
+     </widget>
+     <widget class="QPushButton" name="OrderFoodButton">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>374</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {	
+	border: none;
+	background-color:rgb(75, 171, 255);
+	border-radius:5px;
+}
+QPushButton:hover {
+	background-color: rgb(125, 188, 255);
+}
+QPushButton:pressed {	
+	background-color:  rgb(125, 188, 255);
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>icons/cil-next.png</normaloff>icons/cil-next.png</iconset>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="ItemConfirmedWidget">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>50</y>
+        <width>639</width>
+        <height>0</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTableWidget{
+background-color: rgba(52, 59, 72,150);
+border:1px solid;
+border-radius:10px;
+}
+QHeaderView::section{
+background-color:rgb(86, 98, 120);
+border:1px solid;
+border-radius:8px
+}
+
+QTableWidget QTableCornerButton::section {
+background-color:rgb(85, 90, 100,190);
+}
+QScrollBar{
+	border:1px transparent;
+    background:rgb(52, 59, 72);
+    margin: 0px 21px 0 21px;
+
+   /* margin: 10px 0 10px 0;*/
+	border-radius:8px;
+ }
+ QScrollBar::add-page, QScrollBar::sub-page
+ {
+     background: none;
+ }
+QScrollBar::add-line{
+      border: none;
+      background: none;
+}
+
+QScrollBar::sub-line {
+      border: none;
+      background: none;
+}
+QScrollBar::handle {
+	border:1px solid;
+	border-color:rgb(105, 180, 255);
+    background:rgb(105, 180, 255);
+	border-radius: 8px;
+ }
+QTableWidget::horizontalHeader {	
+	background-color: rgb(81, 255, 0);
+}
+QTableWidget::item:selected{
+	background-color: rgb(85, 170, 255);
+}
+QHeaderView
+{
+    border: 1px solid rgb(32, 34, 42);
+}
+QHeaderView::section:horizontal
+{
+    border: 1px solid rgb(32, 34, 42);
+	background-color: rgb(27, 29, 35);
+	padding: 3px;
+	color:rgb(175, 175, 185);
+	border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+</string>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::DoubleClicked</set>
+      </property>
+      <property name="tabKeyNavigation">
+       <bool>false</bool>
+      </property>
+      <property name="showDropIndicator" stdset="0">
+       <bool>false</bool>
+      </property>
+      <property name="dragDropOverwriteMode">
+       <bool>false</bool>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
+      </property>
+      <property name="gridStyle">
+       <enum>Qt::SolidLine</enum>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>206</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>Item</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Quantity</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Special Note</string>
+       </property>
+      </column>
+     </widget>
+    </widget>
+   </widget>
    <zorder>TopFrame</zorder>
    <zorder>MidFrame</zorder>
    <zorder>ENPPage</zorder>
    <zorder>CheckOutPage</zorder>
    <zorder>Main</zorder>
    <zorder>RateUsPage</zorder>
+   <zorder>MenuPage</zorder>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <customwidgets>
   <customwidget>
