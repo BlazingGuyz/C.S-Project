@@ -10125,11 +10125,16 @@ QPushButton:pressed {
     <widget class="QListWidget" name="Notifications">
      <property name="geometry">
       <rect>
-       <x>515</x>
+       <x>15</x>
        <y>0</y>
-       <width>311</width>
-       <height>211</height>
+       <width>811</width>
+       <height>241</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">QListWidget {
@@ -10146,42 +10151,52 @@ QListWidget:focused {
 	border: 2px solid rgb(43, 50, 61);
 }
 
- QScrollBar:vertical {
+ QScrollBar {
 	border:1px transparent;
     background:rgb(52, 59, 72);
     margin: 5px 5px 5px 5px;
 	border-radius:5px;
 	width:20px;
  }
- QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
+ QScrollBar::add-pagel, QScrollBar::sub-page
  {
      background: none;
  }
-QScrollBar::add-line:vertical{
+QScrollBar::add-line {
       border: none;
       background: none;
 }
 
-QScrollBar::sub-line:vertical {
+QScrollBar::sub-line {
       border: none;
       background: none;
 }
-QScrollBar::handle:vertical {
+QScrollBar::handle {
 	border:1px transparent;
 	border-color:rgb(105, 180, 255);
     background:rgb(46, 172, 255);
 	border-radius: 5px;
+ }
+ QScrollBar:horizontal {
+	border:1px transparent;
+    background:rgb(52, 59, 72);
+    margin: 5px 5px 5px 5px;
+	border-radius:5px;
+	height:20px;
  }</string>
      </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOn</enum>
      </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
+     </property>
     </widget>
    </widget>
-   <zorder>NotifyPage</zorder>
    <zorder>FrameTop</zorder>
    <zorder>BillingPage</zorder>
    <zorder>RegistrationPage</zorder>
+   <zorder>NotifyPage</zorder>
   </widget>
  </widget>
  <resources/>
