@@ -27,7 +27,7 @@ while True:
     
     if key == ord('q'):
         break
-showPic = cv2.imwrite(str(random.randint(1100,111110)) + ".jpg", frame)
+#showPic = cv2.imwrite(str(random.randint(1100,111110)) + ".jpg", frame)
 print(a)
 # 2. shutdown the camera
 video.release()
@@ -48,14 +48,13 @@ if __name__ == '__main__' :
     r = cv2.selectROI(frame)
     
     # Crop image
-    imCrop = r[int(r[1]):int(r[1]+r[3]), int(r[0]):int(r[0]+r[2])]
+    imCrop = frame[int(r[1]):int(r[1]+r[3]), int(r[0]):int(r[0]+r[2])]
 
     # Display cropped image
     cv2.imshow("Image", imCrop)
     cv2.waitKey()
 
-save("98524.jpg")
-
+showcPic = cv2.imwrite(str(random.randint(1100,111110)) + ".jpg", imCrop)
 cv2.destroyAllWindows()
 
 
