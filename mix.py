@@ -2,7 +2,7 @@ import cv2, time
 import random
 import numpy as np
 import os
-
+import save
 video = cv2.VideoCapture(0) 
 a = 0
 
@@ -23,7 +23,7 @@ while True:
     #cv2.waitKey(0)
     
     # 7. for playing 
-    key = cv2.waitKey()
+    key = cv2.waitKey(1)
     
     if key == ord('q'):
         break
@@ -52,9 +52,9 @@ if __name__ == '__main__' :
 
     # Display cropped image
     cv2.imshow("Image", imCrop)
-    cv2.waitKey(0)
+    cv2.waitKey()
 
-
+save("98524.jpg")
 
 cv2.destroyAllWindows()
 
