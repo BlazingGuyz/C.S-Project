@@ -6,7 +6,7 @@ import os
 if __name__ == '__main__' :
 
     # Read image
-    im = cv2.imread("64129.jpg")
+    im = cv2.imread("")
     
     # Select ROI
     r = cv2.selectROI(im)
@@ -23,7 +23,7 @@ if __name__ == '__main__' :
 
 
     # Image path 
-image_path = r'C:\\Users\\HP\Desktop\\C.S-Project\\60569.jpg'
+image_path = r'C:\\Users\\HP\Desktop\\C.S-Project\\.jpg'
 
 # Image directory 
 directory = r'C:\\Users\\HP\\Desktop'

@@ -7,7 +7,7 @@ import cv2
 import os 
 
 # Image path 
-image_path = r'C:\\Users\\HP\Desktop\\C.S-Project\\60569.jpg'
+image_path = r'C:\\Users\\HP\Desktop\\C.S-Project\\14214.jpg'
 
 # Image directory 
 directory = r'C:\\Users\\HP\\Desktop'
