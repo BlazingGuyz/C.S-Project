@@ -14,14 +14,15 @@ import cv2
 import random
 import numpy as np
 
-PASSWORD="<redacted>"
-PORT=0
+PASSWORD="toor"
+PORT=19488
 
+NotificationThread=0
 NewNotificationCont=""
 NewCheckInDate=""
 NewCheckOutDate=""
 PicName=""
-mydb = mysql.connector.connect(
+mydb = mysql.connector.connect(		#This one is for the regular Data sending and Receiving 
   host="0.tcp.in.ngrok.io",
   user="root",
   passwd=PASSWORD,
@@ -29,11 +30,71 @@ mydb = mysql.connector.connect(
   port=PORT
   )
 mycursor=mydb.cursor(buffered=True)
+
+mydbnotif = mysql.connector.connect(	#This one is specifically for Notification Loop to avoid traffic.
+			host="0.tcp.in.ngrok.io",
+  			user="root",
+  			passwd=PASSWORD,
+  			database="hotelkvs",
+  			port=PORT
+  			)
+mycursornotif=mydbnotif.cursor(buffered=True)
 RoomTypeDict={101:"Deluxe Room",102:"Deluxe Room",103:"Deluxe Room",104:"Deluxe Room",201:"Super Deluxe Room",202:"Super Deluxe Room",203:"Super Deluxe Room",301:"Suite",302:"Suite",303:"Suite"}
 roomAvailable=[101,102,103,104,201,202,203,301,302,303]
 
 #class EmailSendThread(QThread):
-#	sentMail
+#	sentMail=pyqtSignal(int)
+#	import email, smtplib, ssl
+#	
+#	from email import encoders
+#	from email.mime.base import MIMEBase
+#	from email.mime.multipart import MIMEMultipart
+#	from email.mime.text import MIMEText
+#	
+#	subject = "An email with attachment from Python"
+#	body = "This is an email with attachment sent from Python"
+#	sender_email = "my@gmail.com"
+#	receiver_email = "your@gmail.com"
+#	password = input("Type your password and press enter:")
+#	
+#	# Create a multipart message and set headers
+#	message = MIMEMultipart()
+#	message["From"] = sender_email
+#	message["To"] = receiver_email
+#	message["Subject"] = subject
+#	message["Bcc"] = receiver_email  # Recommended for mass emails
+#	
+#	# Add body to email
+#	message.attach(MIMEText(body, "plain"))
+#	
+#	filename = "document.pdf"  # In same directory as script
+#	
+#	# Open PDF file in binary mode
+#	with open(filename, "rb") as attachment:
+#	    # Add file as application/octet-stream
+#	    # Email client can usually download this automatically as attachment
+#	    part = MIMEBase("application", "octet-stream")
+#	    part.set_payload(attachment.read())
+#	
+#	# Encode file in ASCII characters to send by email    
+#	encoders.encode_base64(part)
+#	
+#	# Add header as key/value pair to attachment part
+#	part.add_header(
+#	    "Content-Disposition",
+#	    f"attachment; filename= {filename}",
+#	)
+#	
+#	# Add attachment to message and convert message to string
+#	message.attach(part)
+#	text = message.as_string()
+#	
+#	# Log in to server using secure context and send email
+#	context = ssl.create_default_context()
+#	with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+#	    server.login(sender_email, password)
+#	    server.sendmail(sender_email, receiver_email, text)
+#	
 class getAvailableRoomsThread(QThread):
 	fetchedAvailablerooms=pyqtSignal(int)
 	def run(self):
@@ -42,14 +103,14 @@ class getAvailableRoomsThread(QThread):
 		mycursor.execute('select RoomNo from Room where RoomStatus="unoccupied";')
 		for rooms in mycursor.fetchall():
 			roomAvailable.append(rooms[0])
-		print(roomAvailable)
+		#print(roomAvailable)
 		self.fetchedAvailablerooms.emit(1)
 
 class NotificationCheckThread(QThread):#Add to Autorun on execution
 	NewNotification=pyqtSignal(int)
 	def run(self):
-		global NewNotificationCont
-		mydbnotif = mysql.connector.connect(
+		print("Running Me!")
+		mydbnotif = mysql.connector.connect(	#This one is specifically for Notification Loop to avoid traffic.
 			host="0.tcp.in.ngrok.io",
   			user="root",
   			passwd=PASSWORD,
@@ -57,9 +118,10 @@ class NotificationCheckThread(QThread):#Add to Autorun on execution
   			port=PORT
   			)
 		mycursornotif=mydbnotif.cursor(buffered=True)
+		global NewNotificationCont
 		NewNotificationNumber=0
 		OldNotificationNumber=0
-		mycursornotif.execute("select COUNT(*) from Notify")#>Vishnu's Query to check for notification number for First time<
+		mycursornotif.execute("select COUNT(*) from Notify")
 		OldNotificationNumber=mycursornotif.fetchone()[0]
 		while True:
 			mydbnotif.reset_session()
@@ -101,12 +163,12 @@ class ModifyCheckInThread(QThread):
 		Time=data[1]
 		Date=Date.split(".")
 		Time=Time.split(".")
-		print(NewCheckInDate)
+		#print(NewCheckInDate)
 		NewCheckInDate=NewCheckInDate.split(" ")
-		print(NewCheckInDate)
+		#print(NewCheckInDate)
 		Date=Date[1]+"."+NewCheckInDate[0]
 		Time=Time[1]+"."+NewCheckInDate[1]
-		print("Time:",Time,"Date:",Date)
+		#print("Time:",Time,"Date:",Date)
 		mycursor.execute("update GData set Time='%s',Date='%s' Where Room='%s'"%(Time,Date,SelRoomNo))
 		mydb.commit()
 		NewCheckInDate=LocalNewCheckInDate
@@ -123,12 +185,12 @@ class ModifyCheckOutThread(QThread):
 		Time=data[1]
 		Date=Date.split(".")
 		Time=Time.split(".")
-		print(NewCheckOutDate)
+		#print(NewCheckOutDate)
 		NewCheckOutDate=NewCheckOutDate.split(" ")
-		print(NewCheckOutDate)
+		#print(NewCheckOutDate)
 		Date=Date[0]+"."+NewCheckOutDate[0]
 		Time=Time[0]+"."+NewCheckOutDate[1]
-		print("Time:",Time,"Date:",Date)
+		#print("Time:",Time,"Date:",Date)
 		mycursor.execute("update GData set Time='%s',Date='%s' Where Room='%s'"%(Time,Date,SelRoomNo))
 		mydb.commit()
 		NewCheckOutDate=LocalNewCheckOutDate
@@ -3450,7 +3512,7 @@ QScrollBar::handle {
 	border-radius:5px;
 	height:20px;
  }""")
-			print("Displaying Notification")
+			#print("Displaying Notification")
 			self.NotifyPage.raise_()
 			for Value in NewNotificationCont:
 				if Value[0]=="Food":
@@ -3474,10 +3536,14 @@ QScrollBar::handle {
 			self.Notifications.clear()
 
 	def NotificationCheckThreadRunnerFunc(self):
-		self.NotificationCheckThreadrunner=NotificationCheckThread()
-		if self.NotificationCheckThreadrunner.isRunning():
+		global NotificationThread
+		#print(self.NotificationCheckThreadrunner.isFinished())
+		if NotificationThread!=0:
 			pass
 		else:
+			print("Starting the Thread")
+			NotificationThread=1
+			self.NotificationCheckThreadrunner=NotificationCheckThread()
 			self.NotificationCheckThreadrunner.start()
 			self.NotificationCheckThreadrunner.NewNotification.connect(lambda:self.NotificationButton.setText("Notifications*"))
 
@@ -3642,7 +3708,7 @@ QHeaderView::section:vertical
 	def RoomSel(self,SelRoomNoOrig):
 		global SelRoomNo
 		SelRoomNo=SelRoomNoOrig
-		print("SelRoomNo0 ",SelRoomNo)
+		#print("SelRoomNo0 ",SelRoomNo)
 		self.RoomPage.setGeometry(QtCore.QRect(0, 0, 0, 571))
 		self.GMSPage.setGeometry(QtCore.QRect(0, 0, 831, 571))
 		self.getGuestInforunner=getGuestInfo()
@@ -3650,7 +3716,7 @@ QHeaderView::section:vertical
 		self.getGuestInforunner.fetchedGuestInfo.connect(lambda:self.displayGuestInfo())
 
 	def displayGuestInfo(self):
-		print(self.getGuestInforunner.isFinished())
+		#print(self.getGuestInforunner.isFinished())
 		global d1,d2,d3,d4,d5,d6,d7,SelRoomNo
 		self.GuestNameLab.setText(self.GuestNameLab.text()+d1)
 		self.GuestEmailIDLab.setText(self.GuestEmailIDLab.text()+d6)
@@ -3684,12 +3750,12 @@ QHeaderView::section:vertical
 		x3=self.CheckIn.text()
 		x7=x3
 		checkoutvar=self.CheckOut.text()
-		print(checkoutvar)
+		#print(checkoutvar)
 		timevar2=str(checkoutvar).split(" ")
 		timevar2=timevar2[1]
 		timevar=str(x3).split(" ")[1]
 		x3=str(str(x3).split(" ")[0])+"."+str(str(checkoutvar).split(" ")[0])
-		print(x3)
+		#print(x3)
 		x4=timevar+"."+timevar2
 		x5=self.GuestEmailID.text()
 		x6=self.GuestPhoneNo.text()
