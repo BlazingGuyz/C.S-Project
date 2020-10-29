@@ -3574,8 +3574,13 @@ QHeaderView::section:vertical
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color:rgba(85, 85, 101,190);
-padding:2px</string>
+       <string notr="true">QLabel{
+background-color:rgba(85, 85, 101,190);
+padding:2px;
+}
+QLabel:hover{
+background-color:rgba(91, 90, 110, 160);
+}</string>
       </property>
       <property name="text">
        <string>Total Amount: ₹</string>
@@ -3606,7 +3611,7 @@ padding:2px</string>
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>831</width>
+       <width>0</width>
        <height>571</height>
       </rect>
      </property>
@@ -4426,7 +4431,7 @@ background-color:rgba(172, 172, 172,130);
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>831</width>
+       <width>0</width>
        <height>571</height>
       </rect>
      </property>

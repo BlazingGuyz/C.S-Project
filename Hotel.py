@@ -1525,8 +1525,13 @@ QHeaderView::section:vertical
 		font = QtGui.QFont()
 		font.setPointSize(20)
 		self.TotalAmount.setFont(font)
-		self.TotalAmount.setStyleSheet("background-color:rgba(85, 85, 101,190);\n"
-"padding:2px")
+		self.TotalAmount.setStyleSheet("""QLabel{
+background-color:rgba(85, 85, 101,190);
+padding:2px;
+}
+QLabel:hover{
+background-color:rgba(91, 90, 110, 160);
+}""")
 		self.TotalAmount.setObjectName("TotalAmount")
 		self.RBG_4 = QtWidgets.QLabel(self.BillingPage)
 		self.RBG_4.setGeometry(QtCore.QRect(10, -10, 811, 541))
