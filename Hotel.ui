@@ -3606,7 +3606,7 @@ padding:2px</string>
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>0</width>
+       <width>831</width>
        <height>571</height>
       </rect>
      </property>
@@ -3814,7 +3814,7 @@ border-shadow:1px</string>
       <widget class="QLabel" name="Label303">
        <property name="geometry">
         <rect>
-         <x>526</x>
+         <x>550</x>
          <y>130</y>
          <width>51</width>
          <height>21</height>
@@ -3839,14 +3839,19 @@ border-shadow:1px</string>
       <widget class="QPushButton" name="Button203">
        <property name="geometry">
         <rect>
-         <x>519</x>
-         <y>179</y>
+         <x>540</x>
+         <y>180</y>
          <width>111</width>
-         <height>161</height>
+         <height>151</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QPushButton{
+background-color:transparent;
+}
+QPushButton:hover{
+background-color:rgba(172, 172, 172,130);
+}</string>
        </property>
        <property name="text">
         <string/>
@@ -3857,7 +3862,7 @@ border-shadow:1px</string>
        </property>
        <property name="iconSize">
         <size>
-         <width>100</width>
+         <width>90</width>
          <height>255</height>
         </size>
        </property>
@@ -3866,13 +3871,18 @@ border-shadow:1px</string>
        <property name="geometry">
         <rect>
          <x>219</x>
-         <y>329</y>
+         <y>339</y>
          <width>111</width>
-         <height>161</height>
+         <height>151</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QPushButton{
+background-color:transparent;
+}
+QPushButton:hover{
+background-color:rgba(172, 172, 172,130);
+}</string>
        </property>
        <property name="text">
         <string/>
@@ -3883,7 +3893,7 @@ border-shadow:1px</string>
        </property>
        <property name="iconSize">
         <size>
-         <width>100</width>
+         <width>90</width>
          <height>255</height>
         </size>
        </property>
@@ -3891,8 +3901,8 @@ border-shadow:1px</string>
       <widget class="QLabel" name="Label302">
        <property name="geometry">
         <rect>
-         <x>329</x>
-         <y>130</y>
+         <x>333</x>
+         <y>128</y>
          <width>51</width>
          <height>21</height>
         </rect>
@@ -3916,8 +3926,8 @@ border-shadow:1px</string>
       <widget class="QLabel" name="Label201">
        <property name="geometry">
         <rect>
-         <x>126</x>
-         <y>299</y>
+         <x>130</x>
+         <y>290</y>
          <width>51</width>
          <height>21</height>
         </rect>
@@ -3942,13 +3952,18 @@ border-shadow:1px</string>
        <property name="geometry">
         <rect>
          <x>319</x>
-         <y>179</y>
+         <y>180</y>
          <width>111</width>
-         <height>161</height>
+         <height>151</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QPushButton{
+background-color:transparent;
+}
+QPushButton:hover{
+background-color:rgba(172, 172, 172,130);
+}</string>
        </property>
        <property name="text">
         <string/>
@@ -3959,7 +3974,7 @@ border-shadow:1px</string>
        </property>
        <property name="iconSize">
         <size>
-         <width>100</width>
+         <width>90</width>
          <height>255</height>
         </size>
        </property>
@@ -3974,7 +3989,12 @@ border-shadow:1px</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QPushButton{
+background-color:transparent;
+}
+QPushButton:hover{
+background-color:rgba(172, 172, 172,130);
+}</string>
        </property>
        <property name="text">
         <string/>
@@ -3985,7 +4005,7 @@ border-shadow:1px</string>
        </property>
        <property name="iconSize">
         <size>
-         <width>100</width>
+         <width>90</width>
          <height>255</height>
         </size>
        </property>
@@ -3993,8 +4013,8 @@ border-shadow:1px</string>
       <widget class="QLabel" name="Label203">
        <property name="geometry">
         <rect>
-         <x>526</x>
-         <y>299</y>
+         <x>550</x>
+         <y>290</y>
          <width>51</width>
          <height>21</height>
         </rect>
@@ -4018,14 +4038,19 @@ border-shadow:1px</string>
       <widget class="QPushButton" name="Button104">
        <property name="geometry">
         <rect>
-         <x>619</x>
-         <y>329</y>
+         <x>610</x>
+         <y>339</y>
          <width>111</width>
-         <height>161</height>
+         <height>151</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QPushButton{
+background-color:transparent;
+}
+QPushButton:hover{
+background-color:rgba(172, 172, 172,130);
+}</string>
        </property>
        <property name="text">
         <string/>
@@ -4036,7 +4061,7 @@ border-shadow:1px</string>
        </property>
        <property name="iconSize">
         <size>
-         <width>100</width>
+         <width>90</width>
          <height>255</height>
         </size>
        </property>
@@ -4045,13 +4070,18 @@ border-shadow:1px</string>
        <property name="geometry">
         <rect>
          <x>419</x>
-         <y>329</y>
+         <y>339</y>
          <width>111</width>
-         <height>161</height>
+         <height>151</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QPushButton{
+background-color:transparent;
+}
+QPushButton:hover{
+background-color:rgba(172, 172, 172,130);
+}</string>
        </property>
        <property name="text">
         <string/>
@@ -4062,7 +4092,7 @@ border-shadow:1px</string>
        </property>
        <property name="iconSize">
         <size>
-         <width>100</width>
+         <width>90</width>
          <height>255</height>
         </size>
        </property>
@@ -4077,7 +4107,12 @@ border-shadow:1px</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QPushButton{
+background-color:transparent;
+}
+QPushButton:hover{
+background-color:rgba(172, 172, 172,130);
+}</string>
        </property>
        <property name="text">
         <string/>
@@ -4088,7 +4123,7 @@ border-shadow:1px</string>
        </property>
        <property name="iconSize">
         <size>
-         <width>100</width>
+         <width>90</width>
          <height>255</height>
         </size>
        </property>
@@ -4096,14 +4131,19 @@ border-shadow:1px</string>
       <widget class="QPushButton" name="Button201">
        <property name="geometry">
         <rect>
-         <x>119</x>
-         <y>179</y>
+         <x>120</x>
+         <y>180</y>
          <width>111</width>
-         <height>161</height>
+         <height>151</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QPushButton{
+background-color:transparent;
+}
+QPushButton:hover{
+background-color:rgba(172, 172, 172,130);
+}</string>
        </property>
        <property name="text">
         <string/>
@@ -4114,7 +4154,7 @@ border-shadow:1px</string>
        </property>
        <property name="iconSize">
         <size>
-         <width>100</width>
+         <width>90</width>
          <height>255</height>
         </size>
        </property>
@@ -4123,13 +4163,18 @@ border-shadow:1px</string>
        <property name="geometry">
         <rect>
          <x>19</x>
-         <y>329</y>
+         <y>339</y>
          <width>111</width>
-         <height>161</height>
+         <height>151</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QPushButton{
+background-color:transparent;
+}
+QPushButton:hover{
+background-color:rgba(172, 172, 172,130);
+}</string>
        </property>
        <property name="text">
         <string/>
@@ -4140,7 +4185,7 @@ border-shadow:1px</string>
        </property>
        <property name="iconSize">
         <size>
-         <width>100</width>
+         <width>90</width>
          <height>255</height>
         </size>
        </property>
@@ -4148,7 +4193,7 @@ border-shadow:1px</string>
       <widget class="QLabel" name="Label102">
        <property name="geometry">
         <rect>
-         <x>226</x>
+         <x>230</x>
          <y>454</y>
          <width>51</width>
          <height>21</height>
@@ -4173,7 +4218,7 @@ border-shadow:1px</string>
       <widget class="QLabel" name="Label104">
        <property name="geometry">
         <rect>
-         <x>626</x>
+         <x>620</x>
          <y>454</y>
          <width>51</width>
          <height>21</height>
@@ -4198,7 +4243,7 @@ border-shadow:1px</string>
       <widget class="QLabel" name="Label103">
        <property name="geometry">
         <rect>
-         <x>426</x>
+         <x>430</x>
          <y>454</y>
          <width>51</width>
          <height>21</height>
@@ -4224,7 +4269,7 @@ border-shadow:1px</string>
        <property name="geometry">
         <rect>
          <x>129</x>
-         <y>130</y>
+         <y>128</y>
          <width>51</width>
          <height>21</height>
         </rect>
@@ -4248,7 +4293,7 @@ border-shadow:1px</string>
       <widget class="QLabel" name="Label101">
        <property name="geometry">
         <rect>
-         <x>26</x>
+         <x>30</x>
          <y>454</y>
          <width>51</width>
          <height>21</height>
@@ -4273,14 +4318,19 @@ border-shadow:1px</string>
       <widget class="QPushButton" name="Button303">
        <property name="geometry">
         <rect>
-         <x>519</x>
+         <x>540</x>
          <y>9</y>
          <width>111</width>
          <height>161</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:transparent;</string>
+        <string notr="true">QPushButton{
+background-color:transparent;
+}
+QPushButton:hover{
+background-color:rgba(172, 172, 172,130);
+}</string>
        </property>
        <property name="text">
         <string/>
@@ -4291,7 +4341,7 @@ border-shadow:1px</string>
        </property>
        <property name="iconSize">
         <size>
-         <width>100</width>
+         <width>90</width>
          <height>255</height>
         </size>
        </property>
@@ -4299,8 +4349,8 @@ border-shadow:1px</string>
       <widget class="QLabel" name="Label202">
        <property name="geometry">
         <rect>
-         <x>326</x>
-         <y>299</y>
+         <x>330</x>
+         <y>290</y>
          <width>51</width>
          <height>21</height>
         </rect>
