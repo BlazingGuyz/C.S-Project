@@ -13,9 +13,25 @@ import mysql.connector
 import cv2
 import random
 import numpy as np
+import Invoice
+import email, smtplib, ssl
 
-PASSWORD="toor"
-PORT=19488
+from email import encoders
+from email.mime.base import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+PASSWORD="<redacted>"
+PORT=0
+
+MB_OK = 0x0
+MB_OKCL = 0x01
+MB_YESNOCL = 0x03
+MB_YESNO = 0x04
+ICON_EXLAIM=0x30
+ICON_INFO = 0x40
+ICON_QUES = 0x20
+ICON_STOP = 0x10
 
 NotificationThread=0
 NewNotificationCont=""
@@ -42,59 +58,71 @@ mycursornotif=mydbnotif.cursor(buffered=True)
 RoomTypeDict={101:"Deluxe Room",102:"Deluxe Room",103:"Deluxe Room",104:"Deluxe Room",201:"Super Deluxe Room",202:"Super Deluxe Room",203:"Super Deluxe Room",301:"Suite",302:"Suite",303:"Suite"}
 roomAvailable=[101,102,103,104,201,202,203,301,302,303]
 
-#class EmailSendThread(QThread):
-#	sentMail=pyqtSignal(int)
-#	import email, smtplib, ssl
-#	
-#	from email import encoders
-#	from email.mime.base import MIMEBase
-#	from email.mime.multipart import MIMEMultipart
-#	from email.mime.text import MIMEText
-#	
-#	subject = "An email with attachment from Python"
-#	body = "This is an email with attachment sent from Python"
-#	sender_email = "my@gmail.com"
-#	receiver_email = "your@gmail.com"
-#	password = input("Type your password and press enter:")
-#	
-#	# Create a multipart message and set headers
-#	message = MIMEMultipart()
-#	message["From"] = sender_email
-#	message["To"] = receiver_email
-#	message["Subject"] = subject
-#	message["Bcc"] = receiver_email  # Recommended for mass emails
-#	
-#	# Add body to email
-#	message.attach(MIMEText(body, "plain"))
-#	
-#	filename = "document.pdf"  # In same directory as script
-#	
-#	# Open PDF file in binary mode
-#	with open(filename, "rb") as attachment:
-#	    # Add file as application/octet-stream
-#	    # Email client can usually download this automatically as attachment
-#	    part = MIMEBase("application", "octet-stream")
-#	    part.set_payload(attachment.read())
-#	
-#	# Encode file in ASCII characters to send by email    
-#	encoders.encode_base64(part)
-#	
-#	# Add header as key/value pair to attachment part
-#	part.add_header(
-#	    "Content-Disposition",
-#	    f"attachment; filename= {filename}",
-#	)
-#	
-#	# Add attachment to message and convert message to string
-#	message.attach(part)
-#	text = message.as_string()
-#	
-#	# Log in to server using secure context and send email
-#	context = ssl.create_default_context()
-#	with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-#	    server.login(sender_email, password)
-#	    server.sendmail(sender_email, receiver_email, text)
-#	
+class EmailSendThread(QThread):
+	sentMail=pyqtSignal(int)
+	def run(self):
+		global SerialNo, d6
+		subject = "KVS Hotel Groups-Invoice"
+		body = """Thank you for choosing KVS Hotels
+We Hope you enjoyed your stay!
+For any queries regarding Bill Invoice, Please reply to this email thread.
+Regards,
+KVS Hotel Groups"""
+		sender_email = "<redacted>"
+		receiver_email = d6
+		password = "<redacted>"
+
+		message = MIMEMultipart()
+		message["From"] = sender_email
+		message["To"] = receiver_email
+		message["Subject"] = subject
+		message["Bcc"] = receiver_email  
+
+		message.attach(MIMEText(body, "plain"))
+
+		filename = "%s.pdf"%SerialNo  
+
+		with open(filename, "rb") as attachment:
+
+		    part = MIMEBase("application", "octet-stream")
+		    part.set_payload(attachment.read())
+ 
+		encoders.encode_base64(part)
+
+		part.add_header(
+		    "Content-Disposition",
+		    f"attachment; filename= {filename}",
+		)
+
+		message.attach(part)
+		text = message.as_string()
+
+		context = ssl.create_default_context()
+		with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+		    server.login(sender_email, password)
+		    server.sendmail(sender_email, receiver_email, text)
+	
+
+class CheckOutThread(QThread):
+	Checkedout=pyqtSignal(int)
+	def run(self):
+		global SelRoomNo,SerialNo,TotalCost
+		print("SerialNo is:", SerialNo)
+		mycursor.execute("insert into RoomHis(Date,Time,Details,Photo,Email,Serialno,Roomno,Phoneno,Rate) select Date,Time,Details,Photo,Email,Serialno,Room,Phoneno,Rate from GData where Room='%s';"%SelRoomNo)
+		mycursor.execute("update RoomHis set TotalAmount=%s where SerialNo='%s';"%(TotalCost,SerialNo))
+		mycursor.execute("Delete from GData where Room='%s';"%SelRoomNo)
+		mycursor.execute("Truncate table R%s;"%SelRoomNo)
+		mycursor.execute("Update Room Set RoomStatus='unoccupied',SerialNo=NULL where RoomNo=%s"%int(SelRoomNo))
+		mydb.commit()
+		self.Checkedout.emit(1)
+class GenerateInvoice(QThread):
+	Generated=pyqtSignal(int)
+	def run(self):
+		global d1,d2,d3,d6,d7,SelRoomNo,SerialNo,TotalCost,fetchedBillingData
+		GuestInfo=[d1,SelRoomNo,d2,d3,SerialNo,TotalCost]
+		Invoice.PrepareHTML(GuestInfo,fetchedBillingData)
+		self.Generated.emit(1)
+
 class getAvailableRoomsThread(QThread):
 	fetchedAvailablerooms=pyqtSignal(int)
 	def run(self):
@@ -110,14 +138,6 @@ class NotificationCheckThread(QThread):#Add to Autorun on execution
 	NewNotification=pyqtSignal(int)
 	def run(self):
 		print("Running Me!")
-		mydbnotif = mysql.connector.connect(	#This one is specifically for Notification Loop to avoid traffic.
-			host="0.tcp.in.ngrok.io",
-  			user="root",
-  			passwd=PASSWORD,
-  			database="hotelkvs",
-  			port=PORT
-  			)
-		mycursornotif=mydbnotif.cursor(buffered=True)
 		global NewNotificationCont
 		NewNotificationNumber=0
 		OldNotificationNumber=0
@@ -199,11 +219,12 @@ class ModifyCheckOutThread(QThread):
 class getGuestInfo(QThread):
 	fetchedGuestInfo=pyqtSignal(int)
 	def run(self):
-		global d1,d2,d3,d6,d7,SelRoomNo
+		global d1,d2,d3,d6,d7,SelRoomNo,SerialNo
 		mycursor.execute("select Serialno,Details,Date,Time,Email,Phoneno from GData Where Room='%s';"%SelRoomNo)
-		data=mycursor.fetchall()#(Serialno,Details,Date,Time,Email,Phoneno,Room)
+		data=mycursor.fetchall()
 		if data!=[]:
 			data=data[0]
+			SerialNo=data[0]
 			d1=data[1]#Name
 			tempdate=data[2]
 			d2=tempdate.split('.')[0]#Check-In Date
@@ -248,27 +269,36 @@ class IDScanThread(QThread):
 			cv2.destroyAllWindows()
 			self.ScanComplete.emit(1)
 		except:
-			ctypes.windll.user32.MessageBoxW(0, "Scan Cancelled!", "Scan error", 0)
+			ctypes.windll.user32.MessageBoxW(0, "Scan Cancelled!", "Scan error", ICON_EXLAIM | MB_OK)
 
 class RegistrationThread(QThread):
 	QueryComplete=pyqtSignal(int)
 	def run(self):
 		global x1,x2,x3,x4,x5,x6,x7,room
-		with open('SerialNo.txt', 'r') as file:
-			for i in file.readlines():
-				y=int(i)
+		mycursor.execute("select Max(SerialNo) from Room where SerialNo is not null;")
+		data1=mycursor.fetchone()
+		mycursor.execute("select Max(SerialNo) from RoomHis where SerialNo is not null;")
+		data2=mycursor.fetchone()
+		print(data1,data2)
+		if data1[0]==None:
+			data1=[0,]
+
+		if data2[0]==None:
+			data2=[0,]
+
+		if data1[0]>=data2[0]:
+			y=int(data1[0])+1
+		else:
+			y=int(data2[0])+1
+		print(y)
 		mycursor.execute("insert into GData values(%s,%s,%s,%s,%s,%s,%s,%s,NULL)",(y,x1,x2,x3,x4,x5,x6,room))
 		dict={101:2000,102:2000,103:2000,104:2000,201:2500,202:2500,203:2500,301:3750,302:3750,303:3750}
 		#mycursor.execute("insert into R%s(Details,Date,Time,Email,Serialno,Phoneno) select Details,Date,Time,Email,Serialno,Phoneno from GData;"%room)
 		amount=dict[int(room)]
 		mycursor.execute("insert into R%s values('Accommodation',%s,'%s',NULL)"%(room,amount,x7))
-		mycursor.execute("update Room set RoomStatus='occupied' where RoomNo=%s;"%room)
+		mycursor.execute("update Room set RoomStatus='occupied',SerialNo='%s' where RoomNo=%s;"%(y,room))
 		mydb.commit()
-		with open('SerialNo.txt','a') as file:#fix this part remove this and add DB serial No
-			p=y+1#fix this part remove this and add DB serial No
-			file.write("\n")#fix this part remove this and add DB serial No
-			file.write("%s"%p)	#fix this part remove this and add DB serial No
-		self.QueryComplete.emit(1)#fix this part remove this and add DB serial No
+		self.QueryComplete.emit(1)
 
 
 
@@ -3398,6 +3428,7 @@ QScrollBar::handle {
 		self.NotificationButton.setCheckable(True)
 		self.NotificationButton.clicked.connect(lambda:self.DisplayNotification())
 		self.AddtoBillButton.clicked.connect(lambda:self.AddtoBillFunc())
+		self.ReceiptGen.clicked.connect(lambda:self.CheckOutFunc())
 		#self.NotificationPage.setGeometry(QtCore.QRect(0, 0, 830, 21))
 		self.MinimizeButton.clicked.connect(lambda:MainWindow.showMinimized())
 		self.RoomType.activated.connect(lambda:self.filterRoomNo())
@@ -3431,6 +3462,39 @@ QScrollBar::handle {
 		self.FrameSubbedTop.mouseReleaseEvent=releasedWindow
 		self.getAvailableRooms()
 
+	def CheckOutFunc(self):
+		global SelRoomNo
+		self.ReceiptGen.setEnabled(False)
+		self.RoomsButton.setEnabled(False)
+		self.RegistrationButton.setEnabled(False)
+		Choice=ctypes.windll.user32.MessageBoxW(0, "Do you want Check-out the Guest?", "GMS Notifier", ICON_QUES | MB_YESNOCL)
+		print(Choice)
+		
+		if Choice==6:
+			self.CheckOutThreadrunner=CheckOutThread()
+			self.CheckOutThreadrunner.start()
+			self.CheckOutThreadrunner.Checkedout.connect(lambda:self.returntoregistration())
+			self.GeneratorThreadrunner=GenerateInvoice()
+			self.GeneratorThreadrunner.start()
+			self.GeneratorThreadrunner.Generated.connect(lambda:self.postcheckout())
+		elif Choice==7:
+			self.GeneratorThreadrunner=GenerateInvoice()
+			self.GeneratorThreadrunner.start()
+			self.GeneratorThreadrunner.Generated.connect(lambda:self.postcheckout())
+		else:
+			self.ReceiptGen.setEnabled(True)
+			self.RoomsButton.setEnabled(True)
+			self.RegistrationButton.setEnabled(True)
+	def postcheckout(self):
+		ctypes.windll.user32.MessageBoxW(0, "Receipt Generated", "GMS Notifier", ICON_INFO | MB_OK);
+		self.ReceiptGen.setEnabled(True)
+		self.RoomsButton.setEnabled(True)
+		self.RegistrationButton.setEnabled(True)
+	def returntoregistration(self):
+		self.setupUi(MainWindow)
+		ctypes.windll.user32.MessageBoxW(0, "Guest Checked-out!", "GMS Notifier", ICON_INFO | MB_OK )
+		self.EmailSendThreadrunner=EmailSendThread()
+		self.EmailSendThreadrunner.start()
 
 	def filterRoomNo(self):
 		global roomAvailable
@@ -3662,7 +3726,7 @@ QHeaderView::section:vertical
 }""")
 
 	def DisplayFetchedData(self):
-		global fetchedBillingData
+		global fetchedBillingData,TotalCost
 		TotalCost=0
 		for data in fetchedBillingData:
 			column=0
@@ -3730,6 +3794,8 @@ QHeaderView::section:vertical
 	def displayGuestInfo(self):
 		#print(self.getGuestInforunner.isFinished())
 		global d1,d2,d3,d4,d5,d6,d7,SelRoomNo
+		if d1=="Unoccupied":
+			self.ContToBillingButton.setEnabled(False)
 		self.GuestNameLab.setText(self.GuestNameLab.text()+d1)
 		self.GuestEmailIDLab.setText(self.GuestEmailIDLab.text()+d6)
 		self.GuestPhoneNoLab.setText(self.GuestPhoneNoLab.text()+d7)
