@@ -447,7 +447,7 @@ border-color: rgb(0, 36, 114);</string>
      <widget class="QPushButton" name="MenuButton">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>34</x>
         <y>30</y>
         <width>111</width>
         <height>121</height>
@@ -587,7 +587,7 @@ QPushButton:pressed {
      <widget class="QPushButton" name="CheckOutButton">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>35</x>
         <y>250</y>
         <width>111</width>
         <height>121</height>
@@ -619,7 +619,7 @@ QPushButton:pressed {
        </size>
       </property>
      </widget>
-     <widget class="QPushButton" name="AskUsButton">
+     <widget class="QPushButton" name="AboutUsButton">
       <property name="geometry">
        <rect>
         <x>420</x>
@@ -756,7 +756,7 @@ border-color:rgb(0, 0, 0)</string>
      <widget class="QLabel" name="DNDLab">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>237</x>
         <y>160</y>
         <width>91</width>
         <height>31</height>
@@ -785,7 +785,7 @@ border-color:rgb(0, 0, 0)</string>
      <widget class="QLabel" name="RoomServiceLab">
       <property name="geometry">
        <rect>
-        <x>230</x>
+        <x>234</x>
         <y>380</y>
         <width>101</width>
         <height>31</height>
@@ -814,7 +814,7 @@ border-color:rgb(0, 0, 0)</string>
      <widget class="QLabel" name="FrontDeskLab">
       <property name="geometry">
        <rect>
-        <x>600</x>
+        <x>604</x>
         <y>160</y>
         <width>101</width>
         <height>31</height>
@@ -873,7 +873,7 @@ date modification </string>
      <widget class="QLabel" name="ENPLab">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>425</x>
         <y>160</y>
         <width>101</width>
         <height>31</height>
@@ -902,7 +902,7 @@ border-color:rgb(0, 0, 0)</string>
      <widget class="QLabel" name="RateUsLab">
       <property name="geometry">
        <rect>
-        <x>600</x>
+        <x>604</x>
         <y>380</y>
         <width>101</width>
         <height>31</height>
@@ -928,10 +928,10 @@ border-color:rgb(0, 0, 0)</string>
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="AskUsLab">
+     <widget class="QLabel" name="AboutUsLab">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>425</x>
         <y>380</y>
         <width>101</width>
         <height>31</height>
@@ -1013,7 +1013,7 @@ border-color:rgb(14, 36, 112);</string>
      <rect>
       <x>0</x>
       <y>70</y>
-      <width>0</width>
+      <width>801</width>
       <height>461</height>
      </rect>
     </property>
@@ -2092,10 +2092,10 @@ border-color: rgb(0, 36, 114);</string>
       <widget class="QLabel" name="FeedbackDone">
        <property name="geometry">
         <rect>
-         <x>170</x>
-         <y>80</y>
-         <width>341</width>
-         <height>231</height>
+         <x>100</x>
+         <y>10</y>
+         <width>500</width>
+         <height>375</height>
         </rect>
        </property>
        <property name="styleSheet">
@@ -2477,7 +2477,7 @@ border-radius:5px;</string>
      <rect>
       <x>0</x>
       <y>70</y>
-      <width>0</width>
+      <width>801</width>
       <height>461</height>
      </rect>
     </property>
@@ -2524,7 +2524,7 @@ border-color: rgb(0, 36, 114);</string>
         <x>40</x>
         <y>50</y>
         <width>641</width>
-        <height>321</height>
+        <height>0</height>
        </rect>
       </property>
       <property name="editTriggers">
@@ -2658,71 +2658,95 @@ QPushButton:pressed {
         <x>40</x>
         <y>50</y>
         <width>639</width>
-        <height>0</height>
+        <height>321</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">QTableWidget{
 background-color: rgba(52, 59, 72,150);
 border:1px solid;
-border-radius:10px;
+border-radius:8px;
 }
-QHeaderView::section{
-background-color:rgb(86, 98, 120);
-border:1px solid;
-border-radius:8px
+QTableCornerButton {
+border:1px transparent;
+border-top-left-radius:8px;
+background-color:transparent;
+}
+QTableCornerButton::section {
+border:1px transparent;
+border-top-left-radius:8px;
+background-color:transparent;
 }
 
-QTableWidget QTableCornerButton::section {
-background-color:rgb(85, 90, 100,190);
-}
 QScrollBar{
 	border:1px transparent;
-    background:rgb(52, 59, 72);
-    margin: 0px 21px 0 21px;
-
-   /* margin: 10px 0 10px 0;*/
+	background:rgb(52, 59, 72);
 	border-radius:8px;
  }
+
  QScrollBar::add-page, QScrollBar::sub-page
  {
-     background: none;
+	border:none;
+	 background: none;
  }
+
 QScrollBar::add-line{
-      border: none;
-      background: none;
+	  border: none;
+	  background: none;
 }
 
 QScrollBar::sub-line {
-      border: none;
-      background: none;
+	  border: none;
+	  background: none;
 }
+
 QScrollBar::handle {
 	border:1px solid;
 	border-color:rgb(105, 180, 255);
-    background:rgb(105, 180, 255);
+	background:rgb(105, 180, 255);
 	border-radius: 8px;
  }
+
 QTableWidget::horizontalHeader {	
 	background-color: rgb(81, 255, 0);
+}
+
+QTableWidget::item{
+	background-color: transparent;
+	border-left:1px solid;
+	border-top:1px solid;
+}
+QTableWidget::item:hover{
+	background-color: rgba(57, 65, 80,150);
 }
 QTableWidget::item:selected{
 	background-color: rgb(85, 170, 255);
 }
-QHeaderView
-{
-    border: 1px solid rgb(32, 34, 42);
+
+QHeaderView{
+border:none;
+background-color:transparent;
 }
+
 QHeaderView::section:horizontal
 {
-    border: 1px solid rgb(32, 34, 42);
+	border: 1px solid rgb(32, 34, 42);
 	background-color: rgb(27, 29, 35);
 	padding: 3px;
 	color:rgb(175, 175, 185);
 	border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+	border-top-right-radius: 8px;
 }
-</string>
+
+QHeaderView::section:vertical
+{
+	border: 1px solid rgb(32, 34, 42);
+	background-color: rgb(27, 29, 35);
+	padding-left:2px;
+	color:rgb(175, 175, 185);
+	border-bottom-right-radius:6px;
+	border-top-right-radius: 6px;
+}</string>
       </property>
       <property name="frameShadow">
        <enum>QFrame::Plain</enum>
@@ -2743,7 +2767,7 @@ QHeaderView::section:horizontal
        <bool>false</bool>
       </property>
       <property name="alternatingRowColors">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <property name="selectionMode">
        <enum>QAbstractItemView::SingleSelection</enum>
@@ -2752,8 +2776,68 @@ QHeaderView::section:horizontal
        <enum>Qt::SolidLine</enum>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>206</number>
+       <number>198</number>
       </attribute>
+      <row>
+       <property name="text">
+        <string>1</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>2</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>3</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>4</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>5</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>6</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>7</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>8</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>9</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>10</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>11</string>
+       </property>
+      </row>
+      <row>
+       <property name="text">
+        <string>13</string>
+       </property>
+      </row>
       <column>
        <property name="text">
         <string>Item</string>
@@ -2772,13 +2856,13 @@ QHeaderView::section:horizontal
      </widget>
     </widget>
    </widget>
+   <zorder>RateUsPage</zorder>
    <zorder>TopFrame</zorder>
    <zorder>MidFrame</zorder>
    <zorder>ENPPage</zorder>
    <zorder>CheckOutPage</zorder>
-   <zorder>Main</zorder>
-   <zorder>RateUsPage</zorder>
    <zorder>MenuPage</zorder>
+   <zorder>Main</zorder>
   </widget>
  </widget>
  <customwidgets>

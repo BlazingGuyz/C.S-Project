@@ -39,7 +39,7 @@ NewCheckInDate=""
 NewCheckOutDate=""
 PicName=""
 mydb = mysql.connector.connect(		#This one is for the regular Data sending and Receiving 
-  host="0.tcp.in.ngrok.io",
+  host="localhost",
   user="root",
   passwd=PASSWORD,
   database="hotelkvs",
@@ -47,8 +47,8 @@ mydb = mysql.connector.connect(		#This one is for the regular Data sending and R
   )
 mycursor=mydb.cursor(buffered=True)
 
-mydbnotif = mysql.connector.connect(	#This one is specifically for Notification Loop to avoid traffic.
-			host="0.tcp.in.ngrok.io",
+mydbnotif = mysql.connector.connect(	#This one is specifically for Notification Loop to avoid traffic on main MySQL Connection.
+			host="localhost",
   			user="root",
   			passwd=PASSWORD,
   			database="hotelkvs",
@@ -286,7 +286,7 @@ class RegistrationThread(QThread):
 		if data2[0]==None:
 			data2=[0,]
 
-		if data1[0]>=data2[0]:
+		if int(data1[0])>=int(data2[0]):
 			y=int(data1[0])+1
 		else:
 			y=int(data2[0])+1
@@ -3590,13 +3590,20 @@ QScrollBar::handle {
  }""")
 			#print("Displaying Notification")
 			self.NotifyPage.raise_()
+			
 			for Value in NewNotificationCont:
+				Value=list(Value)
 				if Value[0]=="Food":
-					toadd="""Date: %s | RoomNo. %s | Item: %s(x%s) | Special Note: %s """%(Value[1],Value[5],Value[2],Value[3],Value[4])
+					Value[2]=Value[2].split("\n")
+					Value[3]=Value[3].split('\n')
+					Value[4]=Value[4].split('\n')
+					for i in range(len(Value[2])):
+						toadd="""Date: %s | RoomNo. %s | Item: %s(x%s) | Special Note: %s """%(Value[1],Value[5],Value[2][i],Value[3][i],Value[4][i])
+						self.Notifications.addItem(toadd)
 				elif Value[0]=="Room Service":
 					toadd="""Guest at Room No. %s requested Room Serivce"""%Value[5]
 				elif Value[0]=="Change CheckOut Date":
-					toadd="""Guest at Room No. %s requested to Change the CheckOut Date to %s"""%(Value[5],Value[2])
+					toadd="""Guest at Room No. %s requested to Change the Check-out Date to %s"""%(Value[5],Value[2])
 				elif Value[0]=="Front Desk":
 					toadd="""Guest at Room No. %s pinged Front Desk"""%Value[5]
 				elif Value[0]=="DND On":
