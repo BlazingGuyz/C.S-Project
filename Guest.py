@@ -130,6 +130,7 @@ class Ui_MainWindow(QWidget):
 		MainWindow.resize(800, 530)
 		MainWindow.setMinimumSize(QtCore.QSize(800, 530))
 		MainWindow.setMaximumSize(QtCore.QSize(800, 530))
+		MainWindow.setWindowIcon(QtGui.QIcon("icons/LogoHead.png"))
 		self.centralwidget = QtWidgets.QWidget(MainWindow)
 		self.centralwidget.setObjectName("centralwidget")
 		self.TopFrame = QtWidgets.QWidget(self.centralwidget)
@@ -1369,9 +1370,20 @@ QHeaderView::section:vertical
 		self.MenuButton.clicked.connect(lambda:self.MenuLoad())
 		self.SubENPPage.setUrl(QtCore.QUrl("https://news.google.com"))
 		self.CheckOutButton.clicked.connect(lambda:self.DisplayRequestCheck())
+		self.AboutUsButton.clicked.connect(lambda:self.AboutUsDisplay())
 		self.DNDButton.setCheckable(True)
 		self.FrontDeskButton.clicked.connect(lambda:self.FrontDeskPingFunc())
 		self.DNDButton.clicked.connect(lambda:self.CheckDNDButton())
+		InfoText="""
+
+Base Version: V1.2
+GUI Version: V1.1
+Developers: Kanad Nemade
+                     Vishnu Padmakumar
+                     Saikat Dhar
+
+		   """	
+		self.Info.clicked.connect(lambda:ctypes.windll.user32.MessageBoxW(0, InfoText, "Application Info", 0))
 		self.retranslateUi(MainWindow)
 		QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1412,6 +1424,11 @@ QHeaderView::section:vertical
 			self.RequestRoomServicerunner.RequestedRoomService.connect(lambda:ctypes.windll.user32.MessageBoxW(0, "Room Service Notified", "GMS Notifier", 0))
 		else:
 			pass
+	def AboutUsDisplay(self):
+		self.SubENPPage.setUrl(QtCore.QUrl("https://blazingguyz.github.io/C.S-Project/"))
+		self.Main.setGeometry(QtCore.QRect(0, 30, 0, 521))
+		self.ENPPage.setGeometry(QtCore.QRect(0, 70, 801, 461))	
+
 
 	def CheckDNDButton(self):
 		if self.DNDButton.isChecked()==True:
@@ -1910,7 +1927,7 @@ QHeaderView::section:vertical
 
 	def retranslateUi(self, MainWindow):
 		_translate = QtCore.QCoreApplication.translate
-		MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+		MainWindow.setWindowTitle(_translate("MainWindow", "KVS Hotel Groups"))
 		self.MainLab.setText(_translate("MainWindow", "KVS Hotel Management Software"))
 		self.MenuLab.setText(_translate("MainWindow", "Order to your room"))
 		self.DNDLab.setText(_translate("MainWindow", "Enable DND"))
