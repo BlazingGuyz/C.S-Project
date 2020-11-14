@@ -22,7 +22,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 PASSWORD="<redacted>"
-PORT=0
+PORT=3306
 
 MB_OK = 0x0
 MB_OKCL = 0x01
