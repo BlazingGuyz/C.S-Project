@@ -553,6 +553,7 @@ class Ui_MainWindow(QWidget):
 		self.ENPPage.setObjectName("ENPPage")
 
 		self.SubENPPage1 = QtWebEngineWidgets.QWebEngineView(self.ENPPage)
+		self.SubENPPage1.setZoomFactor(0.7)
 		self.SubENPPage1.setGeometry(QtCore.QRect(9, 9, 781, 441))
 		self.SubENPPage1.setStyleSheet("background-color:rgb(255, 255, 255);\n"
 "border:1px solid;\n"
@@ -560,6 +561,7 @@ class Ui_MainWindow(QWidget):
 		self.SubENPPage1.setObjectName("SubENPPage1")
 
 		self.SubENPPage = QtWebEngineWidgets.QWebEngineView(self.ENPPage)
+		self.SubENPPage.setZoomFactor(0.95)
 		self.SubENPPage.setGeometry(QtCore.QRect(9, 9, 781, 441))
 		self.SubENPPage.setStyleSheet("background-color:rgb(255, 255, 255);\n"
 "border:1px solid;\n"
