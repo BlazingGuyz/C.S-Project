@@ -7,11 +7,13 @@ from PyQt5.QtGui import QCursor, QMovie
 from PyQt5.QtCore import Qt
 import Menu
 import ctypes
+import sys
 from datetime import datetime
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QWidget
 import mysql.connector
 from PyQt5 import QtWebEngineWidgets
+from PyQt5.QtWebEngineWidgets import QWebEngineSettings
 
 MB_OK = 0x0
 MB_OKCL = 0x01
@@ -553,6 +555,7 @@ class Ui_MainWindow(QWidget):
 		self.ENPPage.setObjectName("ENPPage")
 
 		self.SubENPPage1 = QtWebEngineWidgets.QWebEngineView(self.ENPPage)
+		self.SubENPPage1.page().settings().setAttribute(QWebEngineSettings.AllowGeolocationOnInsecureOrigins, True)
 		self.SubENPPage1.setZoomFactor(0.7)
 		self.SubENPPage1.setGeometry(QtCore.QRect(9, 9, 781, 441))
 		self.SubENPPage1.setStyleSheet("background-color:rgb(255, 255, 255);\n"
@@ -561,6 +564,7 @@ class Ui_MainWindow(QWidget):
 		self.SubENPPage1.setObjectName("SubENPPage1")
 
 		self.SubENPPage = QtWebEngineWidgets.QWebEngineView(self.ENPPage)
+		self.SubENPPage.page().settings().setAttribute(QWebEngineSettings.AllowGeolocationOnInsecureOrigins, True)
 		self.SubENPPage.setZoomFactor(0.95)
 		self.SubENPPage.setGeometry(QtCore.QRect(9, 9, 781, 441))
 		self.SubENPPage.setStyleSheet("background-color:rgb(255, 255, 255);\n"
@@ -1980,13 +1984,14 @@ QHeaderView::section:vertical
 		item = self.ItemConfirmedWidget.horizontalHeaderItem(2)
 		item.setText(_translate("MainWindow", "Special Note"))
 
-
+def except_hook(cls, exception, traceback):
+	sys.__excepthook__(cls, exception, traceback)
 
 if __name__ == "__main__":
-	import sys
 	app = QtWidgets.QApplication(sys.argv)
 	app.setStyleSheet('QMainWindow{background-color: darkgray;border: 1px solid black;}')
 	MainWindow = QtWidgets.QMainWindow()
+	sys.excepthook = except_hook
 	ui = Ui_MainWindow()
 	ui.setMouseTracking(True)
 	MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
