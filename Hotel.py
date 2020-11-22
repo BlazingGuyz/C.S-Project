@@ -21,7 +21,7 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-PASSWORD="<redacted>"
+PASSWORD="<redated>"
 PORT=3306
 
 MB_OK = 0x0
@@ -3636,10 +3636,13 @@ QScrollBar::handle {
 		itemQuantity=self.Quantity.text()
 		Amount=self.ServiceCharge.text()
 		AddtoBillDate=self.ServiceDate.text()
-		AddtoBillAmount=int(Amount)*int(itemQuantity)
-		self.addtoBillThreadrunner=addtoBillThread()
-		self.addtoBillThreadrunner.start()
-		self.addtoBillThreadrunner.addedtoBillThread.connect(lambda:ctypes.windll.user32.MessageBoxW(0, f"Added {AddtoBillChargedfor} to bill successfully!", "GMS Notifier", 0))#Add ctypes notification
+		if Amount.isalnum()==0 or itemQuantity.isalnum()==0 or AddtoBillChargedfor.isalnum()==0 or AddtoBillDate.isalnum()==0:
+			ctypes.windll.user32.MessageBoxW(0, "Please fill all the data", "Registration", 0)
+		else:
+			AddtoBillAmount=int(Amount)*int(itemQuantity)
+			self.addtoBillThreadrunner=addtoBillThread()
+			self.addtoBillThreadrunner.start()
+			self.addtoBillThreadrunner.addedtoBillThread.connect(lambda:ctypes.windll.user32.MessageBoxW(0, f"Added {AddtoBillChargedfor} to bill successfully!", "GMS Notifier", 0))#Add ctypes notification
 
 	def BillingInfoFunc(self):
 		self.GMSPage.setGeometry(QtCore.QRect(0, 0, 0, 571))
@@ -3803,6 +3806,9 @@ QHeaderView::section:vertical
 		global d1,d2,d3,d4,d5,d6,d7,SelRoomNo
 		if d1=="Unoccupied":
 			self.ContToBillingButton.setEnabled(False)
+			self.AddtoBillButton.setEnabled(False)
+			self.ModifyCheckOutButton.setEnabled(False)
+			self.ModifyCheckInButton.setEnabled(False)
 		self.GuestNameLab.setText(self.GuestNameLab.text()+d1)
 		self.GuestEmailIDLab.setText(self.GuestEmailIDLab.text()+d6)
 		self.GuestPhoneNoLab.setText(self.GuestPhoneNoLab.text()+d7)
@@ -3835,20 +3841,21 @@ QHeaderView::section:vertical
 		x3=self.CheckIn.text()
 		x7=x3
 		checkoutvar=self.CheckOut.text()
-		#print(checkoutvar)
 		timevar2=str(checkoutvar).split(" ")
 		timevar2=timevar2[1]
 		timevar=str(x3).split(" ")[1]
 		x3=str(str(x3).split(" ")[0])+"."+str(str(checkoutvar).split(" ")[0])
-		#print(x3)
 		x4=timevar+"."+timevar2
 		x5=self.GuestEmailID.text()
 		x6=self.GuestPhoneNo.text()
 		room=self.RoomNumber.currentText()
-		self.QueryThread=RegistrationThread()
-		self.Book.setEnabled(False)
-		self.QueryThread.start()
-		self.QueryThread.QueryComplete.connect(lambda:self.doneRegistration())
+		if x1.isalnum()==0 or x2.isalnum()==0 or x3.isalnum()==0 or x4.isalnum()==0 or x5.isalnum()==0 or x6.isalnum()==0 or x7.isalnum()==0 or room.isalnum()==0:
+			ctypes.windll.user32.MessageBoxW(0, "Please fill all the data", "Registration", 0)
+		else:
+			self.QueryThread=RegistrationThread()
+			self.Book.setEnabled(False)
+			self.QueryThread.start()
+			self.QueryThread.QueryComplete.connect(lambda:self.doneRegistration())
 
 	def doneRegistration(self):
 		ctypes.windll.user32.MessageBoxW(0, "Room Booked", "Registration", 0)
