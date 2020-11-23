@@ -21,7 +21,7 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-PASSWORD="<redated>"
+PASSWORD="<redacted>"
 PORT=3306
 
 MB_OK = 0x0
@@ -3486,7 +3486,7 @@ QScrollBar::handle {
 			self.RoomsButton.setEnabled(True)
 			self.RegistrationButton.setEnabled(True)
 	def postcheckout(self):
-		ctypes.windll.user32.MessageBoxW(0, "Receipt Generated", "GMS Notifier", ICON_INFO | MB_OK);
+		ctypes.windll.user32.MessageBoxW(0, "Receipt Generated", "GMS Notifier", ICON_INFO | MB_OK)
 		self.ReceiptGen.setEnabled(True)
 		self.RoomsButton.setEnabled(True)
 		self.RegistrationButton.setEnabled(True)
@@ -3803,7 +3803,7 @@ QHeaderView::section:vertical
 
 	def displayGuestInfo(self):
 		#print(self.getGuestInforunner.isFinished())
-		global d1,d2,d3,d4,d5,d6,d7,SelRoomNo
+		global d1,d2,d3,d6,d7,SelRoomNo
 		if d1=="Unoccupied":
 			self.ContToBillingButton.setEnabled(False)
 			self.AddtoBillButton.setEnabled(False)
