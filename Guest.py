@@ -145,7 +145,7 @@ class Ui_MainWindow(QWidget):
 "    background-color: rgb(125, 188, 255);\n"
 "}\n"
 "QPushButton:pressed {    \n"
-"    background-color:  rgb(125, 188, 255);\n"
+"    background-color:  rgb(250, 50, 50);\n"
 "}")
 		self.Exit.setText("")
 		icon = QtGui.QIcon()
@@ -542,7 +542,7 @@ class Ui_MainWindow(QWidget):
 		self.AboutUsLab.setAlignment(QtCore.Qt.AlignCenter)
 		self.AboutUsLab.setObjectName("AboutUsLab")
 		self.BG = QtWidgets.QLabel(self.Main)
-		self.BG.setGeometry(QtCore.QRect(0, 0, 801, 499))
+		self.BG.setGeometry(QtCore.QRect(0, 0, 801, 500))
 		self.BG.setText("")
 		self.BG.setPixmap(QtGui.QPixmap("background/bg7.jpg"))
 		self.BG.setScaledContents(True)
@@ -1383,8 +1383,8 @@ QHeaderView::section:vertical
 		self.DNDButton.clicked.connect(lambda:self.CheckDNDButton())
 		InfoText="""
 
-Base Version: V1.2
-GUI Version: V1.1
+Base Version: V2.2
+GUI Version: V2.1
 Developers: Kanad Nemade
                      Vishnu Padmakumar
                      Saikat Dhar

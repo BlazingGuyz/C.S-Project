@@ -21,7 +21,7 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-PASSWORD="<redacted>"
+PASSWORD="toor"
 PORT=3306
 
 MB_OK = 0x0
@@ -3435,6 +3435,16 @@ QScrollBar::handle {
 		self.retranslateUi(MainWindow)
 		QtCore.QMetaObject.connectSlotsByName(MainWindow)
 		self.NotificationCheckThreadRunnerFunc()
+		InfoText="""
+
+Base Version: V2.2
+GUI Version: V2.1
+Developers: Kanad Nemade
+                     Vishnu Padmakumar
+                     Saikat Dhar
+
+		   """	
+		self.InfoButton.clicked.connect(lambda:ctypes.windll.user32.MessageBoxW(0, InfoText, "Application Info", 0))
 		
 	
 		def moveWindow(event):
