@@ -21,7 +21,7 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-PASSWORD="toor"
+PASSWORD="<redacted>"
 PORT=3306
 
 MB_OK = 0x0
