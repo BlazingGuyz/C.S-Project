@@ -20,7 +20,7 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-
+d1=d2=d3=d6=d7=SelRoomNo=SerialNo=TotalCost=fetchedBillingData=AddtoBillAmount=AddtoBillChargedfor=AddtoBillDate=x1=x2=x3=x4=x5=x6=x7=room=""
 PASSWORD="<redacted>"
 PORT=3306
 
@@ -246,6 +246,7 @@ class getGuestInfo(QThread):
 
 class IDScanThread(QThread):
 	ScanComplete=pyqtSignal(int)
+	ScanIncomplete=pyqtSignal(int)
 	def run(self):
 		global PicName
 		video = cv2.VideoCapture(0) 
@@ -269,7 +270,10 @@ class IDScanThread(QThread):
 			cv2.destroyAllWindows()
 			self.ScanComplete.emit(1)
 		except:
+			self.ScanIncomplete.emit(1)
+			cv2.destroyAllWindows()			
 			ctypes.windll.user32.MessageBoxW(0, "Scan Cancelled!", "Scan error", ICON_EXLAIM | MB_OK)
+			self.wait()
 
 class RegistrationThread(QThread):
 	QueryComplete=pyqtSignal(int)
@@ -3771,6 +3775,9 @@ QHeaderView::section:vertical
 			x2=file.read()
 		self.IDScan.setEnabled(True)
 
+	def IDScanInCompleteFunc(self):	
+		self.IDScan.setEnabled(True)
+
 	def ModifyCheckInFunc(self):
 		global NewCheckInDate
 		self.ModifyCheckInButton.setEnabled(False)
@@ -3800,6 +3807,7 @@ QHeaderView::section:vertical
 		self.ScanThread=IDScanThread()
 		self.ScanThread.start()
 		self.ScanThread.ScanComplete.connect(lambda :self.IDScanCompleteFunc())
+		self.ScanThread.ScanIncomplete.connect(lambda :self.IDScanInCompleteFunc())
 		
 	def RoomSel(self,SelRoomNoOrig):
 		global SelRoomNo

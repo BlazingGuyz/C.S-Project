@@ -23,7 +23,7 @@ ICON_EXLAIM=0x30
 ICON_INFO = 0x40
 ICON_QUES = 0x20
 ICON_STOP = 0x10
-
+TotalFoodItem=currentCheckoutDate=NewCheckOutDate=Star1Rating=Star2Rating=Star3Rating=Star4Rating=Star5Rating=Star6Rating=TotalRating=selectedItems=""
 mydb = mysql.connector.connect(		#This one is for the regular Data sending and Receiving 
   host="localhost",
   user="root",
