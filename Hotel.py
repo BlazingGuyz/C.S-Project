@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QPoint
-from PyQt5.QtCore import QThread,pyqtSignal
-from PyQt5.QtGui import QCursor
-from PyQt5.QtCore import Qt
+from PySide6 import QtCore, QtGui, QtWidgets
+from PySide6.QtCore import QPoint
+from PySide6.QtCore import QThread,Signal
+from PySide6.QtGui import QCursor
+from PySide6.QtCore import Qt
 import ctypes
 import playsound
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtWidgets import QWidget
+from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QWidget
 import mysql.connector
 import cv2
 import random
@@ -59,7 +59,7 @@ RoomTypeDict={101:"Deluxe Room",102:"Deluxe Room",103:"Deluxe Room",104:"Deluxe 
 roomAvailable=[101,102,103,104,201,202,203,301,302,303]
 
 class EmailSendThread(QThread):
-	sentMail=pyqtSignal(int)
+	sentMail=Signal(int)
 	def run(self):
 		global SerialNo, d6
 		subject = "KVS Hotel Groups-Invoice"
@@ -104,7 +104,7 @@ KVS Hotel Groups"""
 	
 
 class CheckOutThread(QThread):
-	Checkedout=pyqtSignal(int)
+	Checkedout=Signal(int)
 	def run(self):
 		global SelRoomNo,SerialNo,TotalCost
 		print("SerialNo is:", SerialNo)
@@ -116,7 +116,7 @@ class CheckOutThread(QThread):
 		mydb.commit()
 		self.Checkedout.emit(1)
 class GenerateInvoice(QThread):
-	Generated=pyqtSignal(int)
+	Generated=Signal(int)
 	def run(self):
 		global d1,d2,d3,d6,d7,SelRoomNo,SerialNo,TotalCost,fetchedBillingData
 		GuestInfo=[d1,SelRoomNo,d2,d3,SerialNo,TotalCost]
@@ -124,7 +124,7 @@ class GenerateInvoice(QThread):
 		self.Generated.emit(1)
 
 class getAvailableRoomsThread(QThread):
-	fetchedAvailablerooms=pyqtSignal(int)
+	fetchedAvailablerooms=Signal(int)
 	def run(self):
 		global roomAvailable
 		roomAvailable=[]
@@ -135,7 +135,7 @@ class getAvailableRoomsThread(QThread):
 		self.fetchedAvailablerooms.emit(1)
 
 class NotificationCheckThread(QThread):#Add to Autorun on execution
-	NewNotification=pyqtSignal(int)
+	NewNotification=Signal(int)
 	def run(self):
 		print("Running Me!")
 		global NewNotificationCont
@@ -157,7 +157,7 @@ class NotificationCheckThread(QThread):#Add to Autorun on execution
 				pass
 			
 class addtoBillThread(QThread):
-	addedtoBillThread=pyqtSignal(int)
+	addedtoBillThread=Signal(int)
 	def run(self):
 		global SelRoomNo,AddtoBillAmount,AddtoBillChargedfor,AddtoBillDate
 		mycursor.execute("insert into R%s values('%s',%s,'%s',NULL);"%(SelRoomNo,AddtoBillChargedfor,AddtoBillAmount,AddtoBillDate))
@@ -165,7 +165,7 @@ class addtoBillThread(QThread):
 		self.addedtoBillThread.emit(1)
 
 class getGuestBillInfo(QThread):
-	gotBillingInfo=pyqtSignal(int)
+	gotBillingInfo=Signal(int)
 	def run(self):
 		global fetchedBillingData,SelRoomNo
 		mycursor.execute("select Date,Chargedfor,Amount from R%s;"%SelRoomNo)
@@ -173,7 +173,7 @@ class getGuestBillInfo(QThread):
 		self.gotBillingInfo.emit(1)
 
 class ModifyCheckInThread(QThread):
-	ModifiedCheckIn=pyqtSignal(int)
+	ModifiedCheckIn=Signal(int)
 	def run(self):
 		global SelRoomNo,NewCheckInDate
 		mycursor.execute("select Date,Time from GData where Room='%s'"%SelRoomNo)
@@ -195,7 +195,7 @@ class ModifyCheckInThread(QThread):
 		self.ModifiedCheckIn.emit(1)
 
 class ModifyCheckOutThread(QThread):
-	ModifiedCheckOut=pyqtSignal(int)
+	ModifiedCheckOut=Signal(int)
 	def run(self):
 		global SelRoomNo,NewCheckOutDate
 		mycursor.execute("select Date,Time from GData where Room='%s'"%SelRoomNo)
@@ -217,7 +217,7 @@ class ModifyCheckOutThread(QThread):
 		self.ModifiedCheckOut.emit(1)
 
 class getGuestInfo(QThread):
-	fetchedGuestInfo=pyqtSignal(int)
+	fetchedGuestInfo=Signal(int)
 	def run(self):
 		global d1,d2,d3,d6,d7,SelRoomNo,SerialNo
 		mycursor.execute("select Serialno,Details,Date,Time,Email,Phoneno from GData Where Room='%s';"%SelRoomNo)
@@ -245,8 +245,8 @@ class getGuestInfo(QThread):
 		self.fetchedGuestInfo.emit(1)
 
 class IDScanThread(QThread):
-	ScanComplete=pyqtSignal(int)
-	ScanIncomplete=pyqtSignal(int)
+	ScanComplete=Signal(int)
+	ScanIncomplete=Signal(int)
 	def run(self):
 		global PicName
 		video = cv2.VideoCapture(0) 
@@ -276,7 +276,7 @@ class IDScanThread(QThread):
 			self.wait()
 
 class RegistrationThread(QThread):
-	QueryComplete=pyqtSignal(int)
+	QueryComplete=Signal(int)
 	def run(self):
 		global x1,x2,x3,x4,x5,x6,x7,room
 		mycursor.execute("select Max(SerialNo) from Room where SerialNo is not null;")
@@ -2371,7 +2371,7 @@ background-color:rgba(172, 172, 172,130);
 		font.setFamily("Segoe UI")
 		font.setPointSize(20)
 		font.setBold(True)
-		font.setWeight(75)
+		font.setWeight(font.Weight(75))
 		self.RoomDetailsLab.setFont(font)
 		self.RoomDetailsLab.setStyleSheet("background-color:transparent;")
 		self.RoomDetailsLab.setObjectName("RoomDetailsLab")
@@ -2382,7 +2382,7 @@ background-color:rgba(172, 172, 172,130);
 		font.setFamily("Segoe UI")
 		font.setPointSize(14)
 		font.setBold(False)
-		font.setWeight(50)
+		font.setWeight(font.Weight(50))
 		self.GuestNameLab.setFont(font)
 		self.GuestNameLab.setStyleSheet("""QLabel{
 background-color:transparent;
@@ -2399,7 +2399,7 @@ background-color:rgba(120, 120, 120, 200)
 		font.setFamily("Segoe UI")
 		font.setPointSize(14)
 		font.setBold(False)
-		font.setWeight(50)
+		font.setWeight(font.Weight(50))
 		self.GuestEmailIDLab.setFont(font)
 		self.GuestEmailIDLab.setStyleSheet("""QLabel{
 background-color:transparent;
@@ -2416,7 +2416,7 @@ background-color:rgba(120, 120, 120, 200)
 		font.setFamily("Segoe UI")
 		font.setPointSize(14)
 		font.setBold(False)
-		font.setWeight(50)
+		font.setWeight(font.Weight(50))
 		self.GuestPhoneNoLab.setFont(font)
 		self.GuestPhoneNoLab.setStyleSheet("""QLabel{
 background-color:transparent;
@@ -2433,7 +2433,7 @@ background-color:rgba(120, 120, 120, 200)
 		font.setFamily("Segoe UI")
 		font.setPointSize(14)
 		font.setBold(False)
-		font.setWeight(50)
+		font.setWeight(font.Weight(50))
 		self.RoomTypeLab.setFont(font)
 		self.RoomTypeLab.setStyleSheet("""QLabel{
 background-color:transparent;
@@ -2449,7 +2449,7 @@ background-color:rgba(120, 120, 120, 200)
 		font.setFamily("Segoe UI")
 		font.setPointSize(14)
 		font.setBold(False)
-		font.setWeight(50)
+		font.setWeight(font.Weight(50))
 		self.RoomNoLab.setFont(font)
 		self.RoomNoLab.setStyleSheet("""QLabel{
 background-color:transparent;
@@ -2466,7 +2466,7 @@ background-color:rgba(120, 120, 120, 200)
 		font.setFamily("Segoe UI")
 		font.setPointSize(14)
 		font.setBold(False)
-		font.setWeight(50)
+		font.setWeight(font.Weight(50))
 		self.GuestCheckInLab.setFont(font)
 		self.GuestCheckInLab.setStyleSheet("""QLabel{
 background-color:transparent;
@@ -2482,7 +2482,7 @@ background-color:rgba(120, 120, 120, 200)
 		font.setFamily("Segoe UI")
 		font.setPointSize(14)
 		font.setBold(False)
-		font.setWeight(50)
+		font.setWeight(font.Weight(50))
 		self.GuestCheckOutLab.setFont(font)
 		self.GuestCheckOutLab.setStyleSheet("""QLabel{
 background-color:transparent;
@@ -2732,7 +2732,7 @@ background-color:rgba(120, 120, 120, 200)
 		font.setFamily("Segoe UI")
 		font.setPointSize(14)
 		font.setBold(False)
-		font.setWeight(50)
+		font.setWeight(font.Weight(50))
 		self.ModifyCheckOutLab.setFont(font)
 		self.ModifyCheckOutLab.setStyleSheet("background-color:transparent;")
 		self.ModifyCheckOutLab.setObjectName("ModifyCheckOutLab")
@@ -2804,7 +2804,7 @@ background-color:rgba(120, 120, 120, 200)
 		font.setFamily("Segoe UI")
 		font.setPointSize(14)
 		font.setBold(False)
-		font.setWeight(50)
+		font.setWeight(font.Weight(50))
 		self.ModifyCheckInLab.setFont(font)
 		self.ModifyCheckInLab.setStyleSheet("background-color:transparent;")
 		self.ModifyCheckInLab.setObjectName("ModifyCheckInLab")
@@ -2815,7 +2815,7 @@ background-color:rgba(120, 120, 120, 200)
 		font.setFamily("Segoe UI")
 		font.setPointSize(14)
 		font.setBold(False)
-		font.setWeight(50)
+		font.setWeight(font.Weight(50))
 		self.AddtoBillLab.setFont(font)
 		self.AddtoBillLab.setStyleSheet("background-color:transparent;")
 		self.AddtoBillLab.setObjectName("AddtoBillLab")		
@@ -3035,7 +3035,7 @@ background-color:rgba(120, 120, 120, 200)
 		font.setFamily("Segoe UI")
 		font.setPointSize(10)
 		font.setBold(True)
-		font.setWeight(75)
+		font.setWeight(font.Weight(75))
 		self.MainLab.setFont(font)
 		self.MainLab.setObjectName("MainLab")
 		self.FrameButton = QtWidgets.QWidget(self.FrameSubbedTop)
@@ -3413,7 +3413,7 @@ QScrollBar::handle {
 		font.setFamily("Segoe UI")
 		font.setPointSize(13)
 		font.setBold(False)
-		font.setWeight(50)
+		font.setWeight(font.Weight(50))
 		self.Notifications.setFont(font)
 		self.Notifications.setObjectName("Notifications")
 		self.NotifyPage.raise_()
