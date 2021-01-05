@@ -7,5 +7,7 @@ Python and Qt based Hotel Management Software.
 4. pyqtwebengine  
 5. mysql-connector-python  
 ## Gallery  
-![image](https://github.com/BlazingGuyz/C.S-Project/raw/gh-pages/images/Hotel.png)
-![image](https://github.com/BlazingGuyz/C.S-Project/raw/gh-pages/images/Guest.png)
+### Hotel Side  
+![image](https://github.com/BlazingGuyz/C.S-Project/raw/gh-pages/images/Hotel.png)  
+### Guest Side  
+![image](https://github.com/BlazingGuyz/C.S-Project/raw/gh-pages/images/Guest.png)  
