@@ -21,6 +21,8 @@ from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 d1=d2=d3=d6=d7=SelRoomNo=SerialNo=TotalCost=fetchedBillingData=AddtoBillAmount=AddtoBillChargedfor=AddtoBillDate=x1=x2=x3=x4=x5=x6=x7=room=""
+ProgramExit=False
+
 PASSWORD="<redacted>"
 PORT=3306
 
@@ -138,12 +140,12 @@ class NotificationCheckThread(QThread):#Add to Autorun on execution
 	NewNotification=Signal(int)
 	def run(self):
 		print("Running Me!")
-		global NewNotificationCont
+		global NewNotificationCont,ProgramExit
 		NewNotificationNumber=0
 		OldNotificationNumber=0
 		mycursornotif.execute("select COUNT(*) from Notify")
 		OldNotificationNumber=mycursornotif.fetchone()[0]
-		while True:
+		while ProgramExit==False:
 			mydbnotif.reset_session()
 			mycursornotif.execute("select COUNT(*) from Notify")
 			NewNotificationNumber=mycursornotif.fetchone()[0]
@@ -155,6 +157,8 @@ class NotificationCheckThread(QThread):#Add to Autorun on execution
 				OldNotificationNumber=NewNotificationNumber
 			else:
 				pass
+		self.wait()
+		self.deleteLater()
 			
 class addtoBillThread(QThread):
 	addedtoBillThread=Signal(int)
@@ -3421,7 +3425,7 @@ QScrollBar::handle {
 		self.BillingPage.raise_()
 		self.RegistrationPage.raise_()
 		MainWindow.setCentralWidget(self.centralwidget)
-		self.ExitButton.clicked.connect(lambda:exit())
+		self.ExitButton.clicked.connect(lambda:self.exitMethod())
 		self.Book.clicked.connect(lambda:self.Registration())
 		self.RegistrationButton.clicked.connect(lambda:self.setupUi(MainWindow))
 		self.RoomsButton.clicked.connect(lambda:self.RoomDisplay())
@@ -3476,6 +3480,14 @@ Developers: Kanad Nemade
 		self.FrameSubbedTop.mouseReleaseEvent=releasedWindow
 		self.getAvailableRooms()
 
+	def exitMethod(self):
+		global ProgramExit
+		ProgramExit=True
+		MainWindow.showMinimized()
+		mydb.close()
+		mydbnotif.close()
+		exit(1)
+
 	def CheckOutFunc(self):
 		global SelRoomNo
 		self.ReceiptGen.setEnabled(False)
@@ -3495,10 +3507,12 @@ Developers: Kanad Nemade
 			self.GeneratorThreadrunner=GenerateInvoice()
 			self.GeneratorThreadrunner.start()
 			self.GeneratorThreadrunner.Generated.connect(lambda:self.postcheckout())
+			ctypes.windll.user32.MessageBoxW(0, "Generating Receipt", "GMS Notifier", ICON_INFO | MB_OK)
 		else:
 			self.ReceiptGen.setEnabled(True)
 			self.RoomsButton.setEnabled(True)
 			self.RegistrationButton.setEnabled(True)
+
 	def postcheckout(self):
 		ctypes.windll.user32.MessageBoxW(0, "Receipt Generated", "GMS Notifier", ICON_INFO | MB_OK)
 		self.ReceiptGen.setEnabled(True)
@@ -3650,7 +3664,7 @@ QScrollBar::handle {
 		itemQuantity=self.Quantity.text()
 		Amount=self.ServiceCharge.text()
 		AddtoBillDate=self.ServiceDate.text()
-		if Amount.isalnum()==0 or itemQuantity.isalnum()==0 or AddtoBillChargedfor.isalnum()==0 or AddtoBillDate.isalnum()==0:
+		if Amount=="" or itemQuantity.isalnum()==0 or AddtoBillChargedfor=="" or AddtoBillDate=="":
 			ctypes.windll.user32.MessageBoxW(0, "Please fill all the data", "Registration", 0)
 		else:
 			AddtoBillAmount=int(Amount)*int(itemQuantity)
@@ -3867,7 +3881,7 @@ QHeaderView::section:vertical
 		x5=self.GuestEmailID.text()
 		x6=self.GuestPhoneNo.text()
 		room=self.RoomNumber.currentText()
-		if x1.isalnum()==0 or x2.isalnum()==0 or x3.isalnum()==0 or x4.isalnum()==0 or x5.isalnum()==0 or x6.isalnum()==0 or x7.isalnum()==0 or room.isalnum()==0:
+		if x1.isspace()==1 or x2=="" or x3=="" or x4=="" or x5.isspace()==1 or x6.isalnum()==0 or x7=="" or room.isalnum()==0:
 			ctypes.windll.user32.MessageBoxW(0, "Please fill all the data", "Registration", 0)
 		else:
 			self.QueryThread=RegistrationThread()

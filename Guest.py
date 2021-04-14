@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
 
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QPoint
-from PyQt5.QtCore import QThread,pyqtSignal
-from PyQt5.QtGui import QCursor, QMovie
-from PyQt5.QtCore import Qt
+from PySide2 import QtCore, QtGui, QtWidgets
+from PySide2.QtCore import QPoint
+from PySide2.QtCore import QThread,Signal
+from PySide2.QtGui import QCursor, QMovie
+from PySide2.QtCore import Qt
 import Menu
 import ctypes
-import sys
 from datetime import datetime
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtWidgets import QWidget
+from PySide2.QtWidgets import QApplication
+from PySide2.QtWidgets import QWidget
 import mysql.connector
-from PyQt5 import QtWebEngineWidgets
-from PyQt5.QtWebEngineWidgets import QWebEngineSettings
+from PySide2 import QtWebEngineWidgets
+from PySide2.QtWebEngineWidgets import QWebEngineSettings
 
 MB_OK = 0x0
 MB_OKCL = 0x01
@@ -36,9 +35,10 @@ mycursor=mydb.cursor(buffered=True)
 with open("room.data",'r') as file:
 	RoomNumber=file.readlines()
 	RoomNumber=RoomNumber[0]
+print("Welcome to Guest Portal")
 
 class NotifyMenu(QThread):
-	NotifiedMenu=pyqtSignal(int)
+	NotifiedMenu=Signal(int)
 	def run(self):
 		global TotalFoodItem
 		Item=''
@@ -60,46 +60,57 @@ class NotifyMenu(QThread):
 		mycursor.execute('insert into Notify values("Food","%s","%s","%s","%s","%s")'%(date,Item,Quantity,SpecialNote,RoomNumber))
 		mydb.commit()
 		self.NotifiedMenu.emit(1)
+		self.wait()
+		self.deleteLater()
 
 class RatingThread(QThread):
-	RatingEntered=pyqtSignal(int)
+	RatingEntered=Signal(int)
 	def run(self):
 		global TotalRating
 		mycursor.execute("Update GData set Rate='%s' where Room='%s'"%(TotalRating,RoomNumber))
 		mydb.commit()
 		self.RatingEntered.emit(1)
-
+		self.wait()
+		self.deleteLater()
 
 class FrontDeskPing(QThread):
-	FrontDeskPingged=pyqtSignal(int)
+	FrontDeskPingged=Signal(int)
 	def run(self):
 		mycursor.execute("insert into Notify values('Front Desk',NULL,NULL,NULL,NULL,'%s')"%RoomNumber)
 		mydb.commit()
 		self.FrontDeskPingged.emit(1)
+		self.wait()
+		self.deleteLater()
 
-	
 class RequestDNDon(QThread):
-	RequestedDNDon=pyqtSignal(int)
+	RequestedDNDon=Signal(int)
 	def run(self):
 		mycursor.execute("insert into Notify values('DND On',NULL,NULL,NULL,NULL,'%s')"%RoomNumber)
 		mydb.commit()
 		self.RequestedDNDon.emit(1)
+		self.wait()
+		self.deleteLater()
+		
 class RequestDNDoff(QThread):
-	RequestedDNDoff=pyqtSignal(int)
+	RequestedDNDoff=Signal(int)
 	def run(self):
 		mycursor.execute("insert into Notify values('DND Off',NULL,NULL,NULL,NULL,'%s')"%RoomNumber)
 		mydb.commit()
 		self.RequestedDNDoff.emit(1)
+		self.wait()
+		self.deleteLater()
 
 class RequestRoomService(QThread):
-	RequestedRoomService=pyqtSignal(int)
+	RequestedRoomService=Signal(int)
 	def run(self):
 		mycursor.execute("insert into Notify values('Room Service',NULL,NULL,NULL,NULL,'%s')"%RoomNumber)
 		mydb.commit()
 		self.RequestedRoomService.emit(1)
+		self.wait()
+		self.deleteLater()
 
 class getCurrentCheckoutdate(QThread):
-	gotCurrentCheckoutDate=pyqtSignal(int)
+	gotCurrentCheckoutDate=Signal(int)
 	def run(self):
 		global currentCheckoutDate
 		mycursor.execute("select Date, Time from GData where Room='%s'"%RoomNumber)
@@ -108,15 +119,18 @@ class getCurrentCheckoutdate(QThread):
 		Time=Data[1].split('.')[1]
 		currentCheckoutDate=Date+" "+Time
 		self.gotCurrentCheckoutDate.emit(1) 
-
+		self.wait()
+		self.deleteLater()
 
 class NotifyNewCheckoutDate(QThread):
-	NotifiedNewCheckoutDate=pyqtSignal(int)
+	NotifiedNewCheckoutDate=Signal(int)
 	def run(self):
 		global NewCheckOutDate
 		mycursor.execute("insert into notify values('Change CheckOut Date',NULL,'%s',NULL,NULL,'%s')"%(NewCheckOutDate,RoomNumber))
 		mydb.commit()
 		self.NotifiedNewCheckoutDate.emit(1)
+		self.wait()
+		self.deleteLater()
 
 class Ui_MainWindow(QWidget):
 	def setupUi(self, MainWindow):
@@ -136,7 +150,7 @@ class Ui_MainWindow(QWidget):
 		self.SubTopFrame.setStyleSheet("background-color: rgb(75, 171, 255);")
 		self.SubTopFrame.setObjectName("SubTopFrame")
 		self.Exit = QtWidgets.QPushButton(self.SubTopFrame)
-		self.Exit.setGeometry(QtCore.QRect(769, -1, 31, 31))
+		self.Exit.setGeometry(QtCore.QRect(769, 0, 31, 31))
 		self.Exit.setStyleSheet("QPushButton {    \n"
 "    border: none;\n"
 "    background-color: transparent;\n"
@@ -153,7 +167,7 @@ class Ui_MainWindow(QWidget):
 		self.Exit.setIcon(icon)
 		self.Exit.setObjectName("Exit")
 		self.Minimize = QtWidgets.QPushButton(self.SubTopFrame)
-		self.Minimize.setGeometry(QtCore.QRect(740, -1, 31, 31))
+		self.Minimize.setGeometry(QtCore.QRect(740, 0, 31, 31))
 		self.Minimize.setStyleSheet("QPushButton {    \n"
 "    border: none;\n"
 "    background-color: transparent;\n"
@@ -170,7 +184,7 @@ class Ui_MainWindow(QWidget):
 		self.Minimize.setIcon(icon1)
 		self.Minimize.setObjectName("Minimize")
 		self.Info = QtWidgets.QPushButton(self.SubTopFrame)
-		self.Info.setGeometry(QtCore.QRect(710, -1, 31, 31))
+		self.Info.setGeometry(QtCore.QRect(710, 0, 31, 31))
 		self.Info.setStyleSheet("QPushButton {    \n"
 "    border: none;\n"
 "    background-color: transparent;\n"
@@ -554,16 +568,19 @@ class Ui_MainWindow(QWidget):
 		self.ENPPage.setStyleSheet("background-color:rgb(75, 171, 255);")
 		self.ENPPage.setObjectName("ENPPage")
 
-		self.SubENPPage1 = QtWebEngineWidgets.QWebEngineView(self.ENPPage)
-		self.SubENPPage1.page().settings().setAttribute(QWebEngineSettings.AllowGeolocationOnInsecureOrigins, True)
-		self.SubENPPage1.setZoomFactor(0.7)
-		self.SubENPPage1.setGeometry(QtCore.QRect(9, 9, 781, 441))
-		self.SubENPPage1.setStyleSheet("background-color:rgb(255, 255, 255);\n"
-"border:1px solid;\n"
-"border-color:rgb(14, 36, 112);")
-		self.SubENPPage1.setObjectName("SubENPPage1")
+		#self.SubENPPage1 = QtWebEngineWidgets.QWebEngineView(self.ENPPage)
+		#self.SubENPPage1.page().settings().setAttribute(QWebEngineSettings.AllowGeolocationOnInsecureOrigins, True)
+		#self.SubENPPage1.setZoomFactor(0.7)
+		#self.SubENPPage1.setGeometry(QtCore.QRect(9, 9, 781, 441))
+		#self.SubENPPage1.setStyleSheet("background-color:rgb(255, 255, 255);\n"
+#"border:1px solid;\n"
+#"border-color:rgb(14, 36, 112);")
+		#self.SubENPPage1.setObjectName("SubENPPage1")
 
 		self.SubENPPage = QtWebEngineWidgets.QWebEngineView(self.ENPPage)
+		self.SubENPPage.loadStarted.connect(lambda: self.progressBar.setGeometry(QtCore.QRect(590, 10, 201, 23)))
+		self.SubENPPage.loadProgress.connect(lambda p:self.progressBar.setProperty("value", p))
+		self.SubENPPage.loadFinished.connect(lambda: self.progressBar.setGeometry(QtCore.QRect(0, 0, 0, 0)))
 		self.SubENPPage.page().settings().setAttribute(QWebEngineSettings.AllowGeolocationOnInsecureOrigins, True)
 		self.SubENPPage.setZoomFactor(0.95)
 		self.SubENPPage.setGeometry(QtCore.QRect(9, 9, 781, 441))
@@ -1033,6 +1050,9 @@ class Ui_MainWindow(QWidget):
 		icon13.addPixmap(QtGui.QPixmap("icons/cil-previous.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		self.ReturnButton.setIcon(icon13)
 		self.ReturnButton.setObjectName("ReturnButton")
+		self.progressBar = QtWidgets.QProgressBar(self.MidFrame)
+		self.progressBar.setGeometry(QtCore.QRect(590, 10, 201, 23))
+		self.progressBar.setObjectName("progressBar")
 		self.CheckOutPage = QtWidgets.QWidget(self.centralwidget)
 		self.CheckOutPage.setGeometry(QtCore.QRect(0, 70, 0, 461))
 		self.CheckOutPage.setStyleSheet("background-color:rgb(170, 85, 0)")
@@ -1375,7 +1395,6 @@ QHeaderView::section:vertical
 		self.NextButton.clicked.connect(lambda:self.SubmitRating())
 		self.MenuButton.clicked.connect(lambda:self.MenuLoad())
 		self.SubENPPage.raise_()
-		self.SubENPPage.setUrl(QtCore.QUrl("https://news.google.com"))
 		self.CheckOutButton.clicked.connect(lambda:self.DisplayRequestCheck())
 		self.AboutUsButton.clicked.connect(lambda:self.AboutUsDisplay())
 		self.DNDButton.setCheckable(True)
@@ -1419,6 +1438,7 @@ Developers: Kanad Nemade
 		self.SubTopFrame.mouseReleaseEvent=releasedWindow
 
 	def exitFunc(self):
+		print("ExitFunc")
 		mydb.close()
 		exit()
 
@@ -1440,11 +1460,11 @@ Developers: Kanad Nemade
 			ctypes.windll.user32.MessageBoxW(0, "Please Disable DND First", "GMS Notifier", ICON_INFO | MB_OK)
 
 	def AboutUsDisplay(self):
-		self.SubENPPage1.raise_()
-		self.SubENPPage1.setUrl(QtCore.QUrl("https://blazingguyz.github.io/C.S-Project/"))
+		#self.SubENPPage1.raise_()
+		#self.SubENPPage1.setUrl(QtCore.QUrl("https://blazingguyz.github.io/C.S-Project/"))
+		self.SubENPPage.load(QtCore.QUrl("https://blazingguyz.github.io/C.S-Project/"))
 		self.Main.setGeometry(QtCore.QRect(0, 30, 0, 521))
 		self.ENPPage.setGeometry(QtCore.QRect(0, 70, 801, 461))	
-
 
 	def CheckDNDButton(self):
 		if self.DNDButton.isChecked()==True:
@@ -1480,7 +1500,6 @@ Developers: Kanad Nemade
 		def NotifyGuestrequestplaced():
 			ctypes.windll.user32.MessageBoxW(0, "New Checkout Date requested!", "GMS Notifier", 0)
 
-
 	def MenuLoad(self):
 		global selectedItems
 		self.ConfirmOrderFoodButton.lower()
@@ -1489,7 +1508,6 @@ Developers: Kanad Nemade
 		self.MenuPage.setGeometry(QtCore.QRect(0, 70, 801, 461))	
 		BVeg=Menu.BreakFast("Veg")
 		BNVeg=Menu.BreakFast("NonVeg")
-		#BSeaFood=Menu.BreakFast("SeaFood")
 		AVeg=Menu.All_Day("Veg")
 		ANVeg=Menu.All_Day("NonVeg")
 		ASeaFood=Menu.All_Day("SeaFood")
@@ -1572,7 +1590,6 @@ Developers: Kanad Nemade
 				self.ItemConfirmedWidget.insertRow(i)
 				self.ItemConfirmedWidget.setItem(i,0,QtWidgets.QTableWidgetItem(selectedItems[i]))
 				self.ItemConfirmedWidget.setItem(i,1,QtWidgets.QTableWidgetItem("1"))
-				#self.ItemConfirmedWidget.setItem(i,2,QtWidgets.QTableWidgetItem("None"))
 				self.ItemConfirmedWidget.setStyleSheet("""QTableWidget{
 background-color: rgba(52, 59, 72,150);
 border:1px solid;
@@ -1659,7 +1676,6 @@ QHeaderView::section:vertical
 	border-top-right-radius: 6px;
 }""")
 	
-
 	def OrderFoodFunc(self):
 		print("Here!")
 		global selectedItems,TotalFoodItem
@@ -1694,7 +1710,6 @@ QHeaderView::section:vertical
 
 	def RatingStar1(self,Stars):
 		global Star1Rating
-
 		IconBright = QtGui.QIcon()
 		IconBright.addPixmap(QtGui.QPixmap("icons/cil-star.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		IconDim = QtGui.QIcon()
@@ -1734,7 +1749,6 @@ QHeaderView::section:vertical
 	
 	def RatingStar2(self,Stars):
 		global Star2Rating
-
 		IconBright = QtGui.QIcon()
 		IconBright.addPixmap(QtGui.QPixmap("icons/cil-star.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		IconDim = QtGui.QIcon()
@@ -1774,7 +1788,6 @@ QHeaderView::section:vertical
 
 	def RatingStar3(self,Stars):
 		global Star3Rating
-
 		IconBright = QtGui.QIcon()
 		IconBright.addPixmap(QtGui.QPixmap("icons/cil-star.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		IconDim = QtGui.QIcon()
@@ -1814,7 +1827,6 @@ QHeaderView::section:vertical
 
 	def RatingStar4(self,Stars):
 		global Star4Rating
-
 		IconBright = QtGui.QIcon()
 		IconBright.addPixmap(QtGui.QPixmap("icons/cil-star.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		IconDim = QtGui.QIcon()
@@ -1893,7 +1905,6 @@ QHeaderView::section:vertical
 
 	def RatingStar6(self,Stars):
 		global Star6Rating
-
 		IconBright = QtGui.QIcon()
 		IconBright.addPixmap(QtGui.QPixmap("icons/cil-star.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 		IconDim = QtGui.QIcon()
@@ -1936,9 +1947,12 @@ QHeaderView::section:vertical
 		self.RateUsPage.setGeometry(QtCore.QRect(0, 70, 801, 461))
 		self.SubbedRateUsPage.lower()
 
-
 	def ENPShowPage(self):
+		#self.SubENPPage.page().profile().cookieStore().deleteAllCookies()
+		#self.SubENPPage.page().profile().setCachePath("./")
+		#QWebEngineSettings.globalSettings().setAttribute(QWebEngineSettings.)
 		self.SubENPPage.raise_()
+		self.SubENPPage.load(QtCore.QUrl("https://www.bbc.com/news/world"))
 		self.Main.setGeometry(QtCore.QRect(0, 30, 0, 521))
 		self.ENPPage.setGeometry(QtCore.QRect(0, 70, 801, 461))	
 
@@ -1970,12 +1984,6 @@ QHeaderView::section:vertical
 		self.CurrentCheckoutDate.setText(_translate("MainWindow", "   Your current Checkout date is:"))
 		__sortingEnabled = self.ItemListWidget.isSortingEnabled()
 		self.ItemListWidget.setSortingEnabled(False)
-		#item = self.ItemListWidget.item(0)
-		#item.setText(_translate("MainWindow", "Vegetarian"))
-		#item = self.ItemListWidget.item(1)
-		#item.setText(_translate("MainWindow", "Non Vegetarian"))
-		#item = self.ItemListWidget.item(2)
-		#item.setText(_translate("MainWindow", "Sea Food"))
 		self.ItemListWidget.setSortingEnabled(__sortingEnabled)
 		item = self.ItemConfirmedWidget.horizontalHeaderItem(0)
 		item.setText(_translate("MainWindow", "Item"))
@@ -1988,6 +1996,11 @@ def except_hook(cls, exception, traceback):
 	sys.__excepthook__(cls, exception, traceback)
 
 if __name__ == "__main__":
+	import sys,os
+	os.environ["QT_DEVICE_PIXEL_RATIO"] = "0"
+	os.environ["QT_AUTO_SCREEN_SCALE_FACTOR"] = "1"
+	os.environ["QT_SCREEN_SCALE_FACTORS"] = "1"
+	os.environ["QT_SCALE_FACTOR"] = "1"
 	app = QtWidgets.QApplication(sys.argv)
 	app.setStyleSheet('QMainWindow{background-color: darkgray;border: 1px solid black;}')
 	MainWindow = QtWidgets.QMainWindow()
