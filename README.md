@@ -8,7 +8,7 @@ Python and Qt based Hotel Management Software.
  
 # Database Set-up & Map:  
 SQLConstructor.py is required to be configured for the SQL Server before its execution.  
-![image](https://github.com/BlazingGuyz/C.S-Project/raw/gh-pages/images/DBStructure.png =322x223)
+![image](https://github.com/BlazingGuyz/C.S-Project/raw/gh-pages/images/DBStructure.png){:height="50%" width="50%"}  
 
 ## Gallery  
 ### Hotel Side  
