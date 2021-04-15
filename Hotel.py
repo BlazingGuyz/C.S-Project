@@ -301,14 +301,12 @@ class RegistrationThread(QThread):
 		print(y)
 		mycursor.execute("insert into GData values(%s,%s,%s,%s,%s,%s,%s,%s,NULL)",(y,x1,x2,x3,x4,x5,x6,room))
 		dict={101:2000,102:2000,103:2000,104:2000,201:2500,202:2500,203:2500,301:3750,302:3750,303:3750}
-		#mycursor.execute("insert into R%s(Details,Date,Time,Email,Serialno,Phoneno) select Details,Date,Time,Email,Serialno,Phoneno from GData;"%room)
 		amount=dict[int(room)]
 		mycursor.execute("insert into R%s values('Accommodation',%s,'%s',NULL)"%(room,amount,x7))
 		mycursor.execute("update Room set RoomStatus='occupied',SerialNo='%s' where RoomNo=%s;"%(y,room))
 		mydb.commit()
 		self.QueryComplete.emit(1)
-
-
+		os.remove(PicName)
 
 class Ui_MainWindow(QWidget):
 	def setupUi(self, MainWindow):
@@ -3427,7 +3425,7 @@ QScrollBar::handle {
 		MainWindow.setCentralWidget(self.centralwidget)
 		self.ExitButton.clicked.connect(lambda:self.exitMethod())
 		self.Book.clicked.connect(lambda:self.Registration())
-		self.RegistrationButton.clicked.connect(lambda:self.setupUi(MainWindow))
+		self.RegistrationButton.clicked.connect(lambda:self.ReloadApplication())
 		self.RoomsButton.clicked.connect(lambda:self.RoomDisplay())
 		self.IDScan.clicked.connect(lambda :self.IDScanFunc())
 		self.ModifyCheckOutButton.clicked.connect(lambda:self.ModifyCheckOutFunc())
@@ -3480,10 +3478,19 @@ Developers: Kanad Nemade
 		self.FrameSubbedTop.mouseReleaseEvent=releasedWindow
 		self.getAvailableRooms()
 
+	def ReloadApplication(self):
+		self.NotificationButton.setEnabled(False)
+		self.Book.setEnabled(False)
+		self.RegistrationButton.setEnabled(False)
+		self.RoomsButton.setEnabled(False)
+		self.setupUi(MainWindow)
+
 	def exitMethod(self):
 		global ProgramExit
 		ProgramExit=True
 		MainWindow.showMinimized()
+		mycursor.close()
+		mycursornotif.close()
 		mydb.close()
 		mydbnotif.close()
 		exit(1)

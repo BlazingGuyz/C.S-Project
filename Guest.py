@@ -581,8 +581,10 @@ class Ui_MainWindow(QWidget):
 		self.SubENPPage.loadStarted.connect(lambda: self.progressBar.setGeometry(QtCore.QRect(590, 10, 201, 23)))
 		self.SubENPPage.loadProgress.connect(lambda p:self.progressBar.setProperty("value", p))
 		self.SubENPPage.loadFinished.connect(lambda: self.progressBar.setGeometry(QtCore.QRect(0, 0, 0, 0)))
-		self.SubENPPage.page().settings().setAttribute(QWebEngineSettings.AllowGeolocationOnInsecureOrigins, True)
-		self.SubENPPage.setZoomFactor(0.95)
+		#self.SubENPPage.page().settings().setAttribute(QWebEngineSettings.AllowGeolocationOnInsecureOrigins, True)
+		self.SubENPPage.page().settings().setAttribute(QWebEngineSettings.JavascriptEnabled, False)
+		self.SubENPPage.page().settings().setAttribute(QWebEngineSettings.PluginsEnabled, True)
+		self.SubENPPage.setZoomFactor(0.80)
 		self.SubENPPage.setGeometry(QtCore.QRect(9, 9, 781, 441))
 		self.SubENPPage.setStyleSheet("background-color:rgb(255, 255, 255);\n"
 "border:1px solid;\n"
@@ -1051,7 +1053,7 @@ class Ui_MainWindow(QWidget):
 		self.ReturnButton.setIcon(icon13)
 		self.ReturnButton.setObjectName("ReturnButton")
 		self.progressBar = QtWidgets.QProgressBar(self.MidFrame)
-		self.progressBar.setGeometry(QtCore.QRect(590, 10, 201, 23))
+		self.progressBar.setGeometry(QtCore.QRect(0, 0, 0, 0))
 		self.progressBar.setObjectName("progressBar")
 		self.CheckOutPage = QtWidgets.QWidget(self.centralwidget)
 		self.CheckOutPage.setGeometry(QtCore.QRect(0, 70, 0, 461))
@@ -1439,6 +1441,7 @@ Developers: Kanad Nemade
 
 	def exitFunc(self):
 		print("ExitFunc")
+		mycursor.close()
 		mydb.close()
 		exit()
 
@@ -1462,6 +1465,7 @@ Developers: Kanad Nemade
 	def AboutUsDisplay(self):
 		#self.SubENPPage1.raise_()
 		#self.SubENPPage1.setUrl(QtCore.QUrl("https://blazingguyz.github.io/C.S-Project/"))
+		self.SubENPPage.setZoomFactor(1)		
 		self.SubENPPage.load(QtCore.QUrl("https://blazingguyz.github.io/C.S-Project/"))
 		self.Main.setGeometry(QtCore.QRect(0, 30, 0, 521))
 		self.ENPPage.setGeometry(QtCore.QRect(0, 70, 801, 461))	
@@ -1952,7 +1956,8 @@ QHeaderView::section:vertical
 		#self.SubENPPage.page().profile().setCachePath("./")
 		#QWebEngineSettings.globalSettings().setAttribute(QWebEngineSettings.)
 		self.SubENPPage.raise_()
-		self.SubENPPage.load(QtCore.QUrl("https://www.bbc.com/news/world"))
+		self.SubENPPage.setZoomFactor(0.95)
+		self.SubENPPage.load(QtCore.QUrl("https://www.yahoo.com/"))
 		self.Main.setGeometry(QtCore.QRect(0, 30, 0, 521))
 		self.ENPPage.setGeometry(QtCore.QRect(0, 70, 801, 461))	
 
