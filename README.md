@@ -6,10 +6,12 @@ Python and Qt based Hotel Management Software.
 3. ctypes  
 4. mysql-connector-python  
  
-# Database Set-up & Map:  
+# Database Set-up  
 SQLConstructor.py is required to be configured for the SQL Server before its execution.  
- <img src="https://github.com/BlazingGuyz/C.S-Project/raw/gh-pages/images/DBStructure.png" width="805" height="558">
- 
+  
+### Database Structure/Map  
+<img src="https://github.com/BlazingGuyz/C.S-Project/raw/gh-pages/images/DBStructure.png" width="805" height="558">
+   
 ## Gallery  
 ### Hotel Side  
 ![image](https://github.com/BlazingGuyz/C.S-Project/raw/gh-pages/images/Hotel.png)  
