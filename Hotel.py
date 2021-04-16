@@ -5,7 +5,7 @@ from PySide6.QtCore import QPoint
 from PySide6.QtCore import QThread,Signal
 from PySide6.QtGui import QCursor
 from PySide6.QtCore import Qt
-import ctypes
+import ctypes,os
 import playsound
 from PySide6.QtWidgets import QApplication
 from PySide6.QtWidgets import QWidget
