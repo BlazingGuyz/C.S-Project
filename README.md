@@ -5,6 +5,10 @@ Python and Qt based Hotel Management Software.
 2. PySide6(Upgraded from Qt5 to Qt6) 
 3. ctypes  
 4. mysql-connector-python  
+5. playsound
+6. opencv
+7. [wkhtmltopdf](https://wkhtmltopdf.org/downloads.html)
+
  
 # Database Set-up  
 SQLConstructor.py is required to be configured for the SQL Server before its execution.  
